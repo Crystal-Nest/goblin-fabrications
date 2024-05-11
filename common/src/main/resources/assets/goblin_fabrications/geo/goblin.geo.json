@@ -1,0 +1,162 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "Goblin",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "head",
+					"parent": "Goblin",
+					"pivot": [0, 10, 0]
+				},
+				{
+					"name": "bocca",
+					"parent": "head",
+					"pivot": [0, 11, -0.5],
+					"cubes": [
+						{"origin": [-4, 10, -3], "size": [8, 2, 6], "uv": [0, 20]},
+						{"origin": [-3, 12, -2.7], "size": [1, 1, 0], "uv": [2, 9]},
+						{"origin": [2, 12, -2.7], "size": [1, 1, 0], "uv": [0, 9]}
+					]
+				},
+				{
+					"name": "fronte",
+					"parent": "head",
+					"pivot": [0, 12.51449, 3.02606],
+					"cubes": [
+						{"origin": [-4, 12, -2.5], "size": [8, 4, 7], "uv": [0, 9]},
+						{"origin": [-14, 10.87333, -4.68012], "size": [8, 0, 5], "pivot": [-1, 8.87333, 1.31988], "rotation": [57.03643, 28.93539, 153.82058], "uv": [18, 9]},
+						{"origin": [6, 10.87333, -4.68012], "size": [8, 0, 5], "pivot": [1, 8.87333, 1.31988], "rotation": [57.03643, -28.93539, -153.82058], "uv": [25, 14]}
+					]
+				},
+				{
+					"name": "Left_arm",
+					"parent": "Goblin",
+					"pivot": [3, 8.5, 0],
+					"cubes": [
+						{"origin": [2, 6.00006, -1.01096], "size": [2, 3, 2], "uv": [24, 41]}
+					]
+				},
+				{
+					"name": "mano_l",
+					"parent": "Left_arm",
+					"pivot": [3, 4.50006, -0.01096],
+					"cubes": [
+						{"origin": [2, 3.00006, -1.01096], "size": [2, 3, 2], "uv": [0, 43]}
+					]
+				},
+				{
+					"name": "Right_arm",
+					"parent": "Goblin",
+					"pivot": [-3, 8.5, 0],
+					"cubes": [
+						{"origin": [-4, 6.0997, -0.49633], "size": [2, 3, 2], "uv": [18, 38]}
+					]
+				},
+				{
+					"name": "Mano_r",
+					"parent": "Right_arm",
+					"pivot": [-3, 4.53271, 0.25367],
+					"cubes": [
+						{"origin": [-4, 3.0997, -0.49633], "size": [2, 3, 2], "uv": [39, 9]}
+					]
+				},
+				{
+					"name": "Righ_leg",
+					"parent": "Goblin",
+					"pivot": [-1, 4.5, 0],
+					"cubes": [
+						{"origin": [-2, 2, -1], "size": [2, 3, 2], "uv": [32, 43]}
+					]
+				},
+				{
+					"name": "piede_r",
+					"parent": "Righ_leg",
+					"pivot": [-1, -0.30894, 0.33749],
+					"cubes": [
+						{"origin": [-2, 0, -1], "size": [2, 2, 2], "uv": [40, 43]}
+					]
+				},
+				{
+					"name": "torso",
+					"parent": "Goblin",
+					"pivot": [0, 12, 0],
+					"cubes": [
+						{"origin": [-2, 5, -2], "size": [4, 5, 4], "uv": [0, 34]}
+					]
+				},
+				{
+					"name": "backpack",
+					"parent": "torso",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-2.5, 3.5, 2], "size": [6, 1, 5], "uv": [0, 28]},
+						{"origin": [3.5, 4.5, 2], "size": [1, 5, 5], "uv": [33, 33]},
+						{"origin": [-3.5, 4.5, 2], "size": [1, 5, 5], "uv": [11, 38]},
+						{"origin": [-2.5, 4.5, 7], "size": [6, 5, 1], "uv": [40, 19]},
+						{"origin": [-2.5, 9.5, 3], "size": [6, 1, 4], "uv": [18, 33]},
+						{"origin": [-2.5, 4.5, 2], "size": [6, 5, 5], "uv": [23, 23]}
+					]
+				},
+				{
+					"name": "spear1",
+					"parent": "backpack",
+					"pivot": [-1.41421, 8.41421, 6],
+					"cubes": [
+						{"origin": [-13, 6, 6], "size": [22, 3, 0], "pivot": [0, 7, 9], "rotation": [0, 0, 45], "uv": [0, 6]},
+						{"origin": [-7.5962, -6.9896, 6.5], "size": [5, 32, 0], "pivot": [-4.5962, 13.0104, 7], "rotation": [0, 0, -60], "uv": [51, 26]}
+					]
+				},
+				{
+					"name": "spear2",
+					"parent": "backpack",
+					"pivot": [-1.33305, 7.66233, 7],
+					"cubes": [
+						{"origin": [-10.09619, 9.01041, 7.1], "size": [22, 3, 0], "pivot": [-4.59619, 13.01041, 7], "rotation": [0, 0, 30], "uv": [0, 3]},
+						{"origin": [-1.36415, 1.27835, 6], "size": [5, 32, 0], "pivot": [-3.86415, 10.27835, 5.5], "rotation": [0, 0, 45], "uv": [51, 26]}
+					]
+				},
+				{
+					"name": "spear3",
+					"parent": "backpack",
+					"pivot": [-0.98017, 8.74727, 6.5],
+					"cubes": [
+						{"origin": [-10.09619, 14.01041, 6.5], "size": [22, 3, 0], "pivot": [-4.59619, 13.01041, 7], "rotation": [0, 0, 60], "uv": [0, 0]},
+						{"origin": [-11.0962, -8.9896, 7], "size": [5, 32, 0], "pivot": [-4.5962, 13.0104, 7], "rotation": [0, 0, -75], "uv": [51, 26]}
+					]
+				},
+				{
+					"name": "Left_leg",
+					"parent": "Goblin",
+					"pivot": [1, 4.5, 0],
+					"cubes": [
+						{"origin": [0, 2, -1], "size": [2, 3, 2], "uv": [40, 33]}
+					]
+				},
+				{
+					"name": "piede_l",
+					"parent": "Left_leg",
+					"pivot": [1, 0.32345, -0.79265],
+					"cubes": [
+						{"origin": [0, 0, -1], "size": [2, 2, 2], "uv": [28, 19]}
+					]
+				},
+				{
+					"name": "spear",
+					"pivot": [0, 0, 0]
+				}
+			]
+		}
+	]
+}
