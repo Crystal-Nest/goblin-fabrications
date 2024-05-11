@@ -32,6 +32,8 @@ dependencies {
   implementation "net.neoforged:neoforge:${neoforge_version}"
   implementation project(":common")
   implementation "it.crystalnest:cobweb-neoforge:${minecraft_version}-${cobweb_version}"
+  implementation("software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}")
+  implementation("com.eliotlash.mclib:mclib:20")
 }
 
 // NeoGradle compiles the game, but we don't want to add our common code to the game's code

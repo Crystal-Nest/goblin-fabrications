@@ -8,6 +8,8 @@ dependencies {
   compileOnly project(":common")
   modImplementation "it.crystalnest:cobweb-fabric:${minecraft_version}-${cobweb_version}"
   modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${fcap_version}"
+  modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
+  implementation("com.eliotlash.mclib:mclib:20")
 }
 
 loom {
