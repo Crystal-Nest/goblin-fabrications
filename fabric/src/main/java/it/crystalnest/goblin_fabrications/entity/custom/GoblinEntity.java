@@ -27,6 +27,7 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
+import java.util.Iterator;
 import java.util.function.Predicate;
 
 public class GoblinEntity extends Skeleton implements GeoEntity {
@@ -48,7 +49,7 @@ public class GoblinEntity extends Skeleton implements GeoEntity {
     protected void registerGoals() {
         //this.goalSelector.addGoal(2, new RestrictSunGoal(this));
         //this.goalSelector.addGoal(3, new FleeSunGoal(this, 1.0));
-        this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Wolf.class, 6.0F, 1.0, 1.2));
+        this.goalSelector.addGoal(3, new AvoidEntityGoal<Wolf>(this, Wolf.class, 6.0F, 5.0, 2.2));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
@@ -61,13 +62,23 @@ public class GoblinEntity extends Skeleton implements GeoEntity {
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<GeoAnimatable>(this, "controller", this::predicate));
+        controllers.add(new AnimationController<GeoAnimatable>(this, "fleeController", this::fleePredicte));
+    }
+
+    private PlayState fleePredicte(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
+        System.out.println(this.goalSelector.getRunningGoals().anyMatch(prioritizedGoal -> prioritizedGoal.getGoal().getClass() == AvoidEntityGoal.class));
+        //if(this.getRevan) {
+          //  geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("flee", Animation.LoopType.LOOP));
+        //}
+        return PlayState.CONTINUE;
     }
 
     private PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
+
         if(geoAnimatableAnimationState.isMoving()){
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
 
-        }else {
+        }else{
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
         }
         return PlayState.CONTINUE;

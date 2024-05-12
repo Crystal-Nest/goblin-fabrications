@@ -15,7 +15,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 public class GoblinRenderer extends GeoEntityRenderer<GoblinEntity> {
     public GoblinRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new GoblinModel());
-        addRenderLayer(new HumanoidArmorLayer(this));
+        //addRenderLayer(new HumanoidArmorLayer(this));
     }
 
     @Override
@@ -26,7 +26,7 @@ public class GoblinRenderer extends GeoEntityRenderer<GoblinEntity> {
     @Override
     public void render(GoblinEntity entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
-        addLayer(new HumanoidArmorLayer(this, new SkeletonModel(context.bakeLayer(modelLayerLocation2)), new SkeletonModel(context.bakeLayer(modelLayerLocation3)), context.getModelManager()));
+        //addLayer(new HumanoidArmorLayer(this, new SkeletonModel(context.bakeLayer(modelLayerLocation2)), new SkeletonModel(context.bakeLayer(modelLayerLocation3)), context.getModelManager()));
 
     }
 }
