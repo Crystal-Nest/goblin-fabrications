@@ -29,12 +29,14 @@ public class GoblinModel extends GeoModel<GoblinEntity> {
 
     @Override
     public void setCustomAnimations(GoblinEntity animatable, long instanceId, AnimationState<GoblinEntity> animationState) {
-        CoreGeoBone head = getAnimationProcessor().getBone("head");
+       // CoreGeoBone head = getAnimationProcessor().getBone("head");
 
-        if(head != null){
-            EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
-            head.setRotX(entityData.headPitch() * Mth.RAD_TO_DEG);
-            head.setRotY(entityData.netHeadYaw() * Mth.RAD_TO_DEG);
-        }
+        //if(head != null){
+         //   EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+          //  head.setRotX(entityData.headPitch() * Mth.RAD_TO_DEG);
+          //  head.setRotY(entityData.netHeadYaw() * Mth.RAD_TO_DEG);
+       // }
     }
+
+
 }

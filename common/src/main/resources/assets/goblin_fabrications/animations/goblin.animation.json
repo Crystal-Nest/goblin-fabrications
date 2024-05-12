@@ -1,7 +1,8 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"Idle": {
+		"idle": {
+			"loop": true,
 			"animation_length": 6,
 			"bones": {
 				"head": {
@@ -87,7 +88,7 @@
 				}
 			}
 		},
-		"Flee": {
+		"flee": {
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
