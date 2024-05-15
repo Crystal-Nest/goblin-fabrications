@@ -1,6 +1,12 @@
 package it.crystalnest.goblin_fabrications.entity.custom;
 
 import it.crystalnest.goblin_fabrications.goals.custom.GoblinFleeGoal;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializer;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
@@ -17,6 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -28,16 +35,23 @@ import software.bernie.geckolib.core.object.PlayState;
 import java.util.Iterator;
 import java.util.function.Predicate;
 
-public class GoblinEntity extends Skeleton implements GeoEntity  {
+public class GoblinEntity extends Monster implements GeoEntity  {
 
-    public boolean isFleeing;
+    private static final EntityDataAccessor<Boolean> FLEEING = SynchedEntityData.defineId(GoblinEntity.class, EntityDataSerializers.BOOLEAN);
+
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
     public GoblinEntity(EntityType<? extends GoblinEntity> entityType, Level level) {
         super(entityType, level);
-        isFleeing = false;
+        this.isFleeing(false);
     }
 
+    public boolean isFleeing(){
+        return this.entityData.get(FLEEING);
+    }
+    public void isFleeing(boolean isFleeing){
+        this.entityData.set(FLEEING, isFleeing);
+    }
     public static AttributeSupplier.Builder setAttributers() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 16.0f)
@@ -48,8 +62,6 @@ public class GoblinEntity extends Skeleton implements GeoEntity  {
 
     @Override
     protected void registerGoals() {
-        //this.goalSelector.addGoal(2, new RestrictSunGoal(this));
-        //this.goalSelector.addGoal(3, new FleeSunGoal(this, 1.0));
         this.goalSelector.addGoal(3, new GoblinFleeGoal<Wolf>(this, Wolf.class, 6.0F, 5.0, 2.2));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -63,40 +75,27 @@ public class GoblinEntity extends Skeleton implements GeoEntity  {
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<GeoAnimatable>(this, "controller", this::predicate));
-        controllers.add(new AnimationController<GeoAnimatable>(this, "fleeController", this::fleePredicte));
-    }
-
-    @Override
-    public PathNavigation getNavigation() {
-        return super.getNavigation();
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
+        this.entityData.define(FLEEING, false);
     }
 
-    @Override
-    public void tick() {
-        super.tick();
-    }
-
-    private PlayState fleePredicte(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
-
-       if(this.isFleeing) {
-           geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("flee", Animation.LoopType.LOOP));
-        }
-        return PlayState.CONTINUE;
-    }
 
     private PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
 
+        System.out.println(this.isFleeing());
+        if(this.isFleeing()) {
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("flee", Animation.LoopType.LOOP));
+        }else{
         if(geoAnimatableAnimationState.isMoving()){
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
 
         }else{
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
-        }
+        }}
         return PlayState.CONTINUE;
     }
 

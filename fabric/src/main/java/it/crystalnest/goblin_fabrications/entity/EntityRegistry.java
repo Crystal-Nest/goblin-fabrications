@@ -15,7 +15,7 @@ import net.minecraft.world.entity.SpawnGroupData;
 
 public final class EntityRegistry {
     private static final Register<EntityType<?>> ENTITY_REGISTER = ModLoader.REGISTER_PROVIDER.of(BuiltInRegistries.ENTITY_TYPE);
-    public static final EntityType<GoblinEntity> GOBLIN = FabricEntityTypeBuilder.create(MobCategory.MONSTER, GoblinEntity::new).dimensions(EntityDimensions.fixed(1.0f,1.0f)).build();
+    public static final EntityType<GoblinEntity> GOBLIN = FabricEntityTypeBuilder.create(MobCategory.MONSTER, GoblinEntity::new).dimensions(EntityDimensions.fixed(0.5f,0.5f)).build();
 
 
     private EntityRegistry() {}

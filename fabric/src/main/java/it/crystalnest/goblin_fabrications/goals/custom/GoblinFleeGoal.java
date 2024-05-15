@@ -26,16 +26,14 @@ public class GoblinFleeGoal<T extends LivingEntity> extends AvoidEntityGoal {
     }
 
     @Override
-    public void tick() {
-        super.tick();
-        if (this.mob.distanceToSqr(this.toAvoid) < 49.0) {
-            if(this.mob.getClass().equals(GoblinEntity.class))
-                ((GoblinEntity) this.mob).isFleeing = true;
-        } else {
-            if(this.mob.getClass().equals(GoblinEntity.class))
-                ((GoblinEntity) this.mob).isFleeing = false;
-        }
-        System.out.println("Mob value :" + ((GoblinEntity) this.mob).isFleeing);
+    public void start() {
+        super.start();
+        ((GoblinEntity) this.mob).isFleeing(true);
     }
 
+    @Override
+    public void stop() {
+        super.start();
+        ((GoblinEntity) this.mob).isFleeing(false);
+    }
 }
