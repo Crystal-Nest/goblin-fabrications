@@ -8,7 +8,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 
-public class ItemRegistry {
+public final class ItemRegistry {
     private static final Register<Item> ITEM_REGISTER = ModLoader.REGISTER_PROVIDER.of(BuiltInRegistries.ITEM);
     public static final Item GOBLIN_SPAWN_EGG = new SpawnEggItem(EntityRegistry.GOBLIN, 0xDD4477, 0x909733, new FabricItemSettings());
 
