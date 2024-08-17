@@ -32,6 +32,7 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
   protected final Predicate<LivingEntity> avoidPredicate;
   protected final Predicate<LivingEntity> predicateOnAvoidEntity;
   private final TargetingConditions avoidEntityTargeting;
+  private int timeWithoutLineOfSight = 0; // Initialize the counter
 
   public GoblinFleeGoal(PathfinderMob pathfinderMob, Class<T> class_, float f, double d, double e) {
 
@@ -61,9 +62,9 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
 
   @Override
   public boolean canUse() {
-    this.toAvoid = this.mob.level().getNearestEntity(this.mob.level().getEntitiesOfClass(this.avoidClass, this.mob.getBoundingBox().inflate(maxDist, 15.0, maxDist), avoidPredicate), this.avoidEntityTargeting, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ());
-    if (this.toAvoid == null) {
-      return false;
+     if (this.toAvoid == null) {
+       this.toAvoid = this.mob.level().getNearestEntity(this.mob.level().getEntitiesOfClass(this.avoidClass, this.mob.getBoundingBox().inflate(maxDist, 15.0, maxDist), avoidPredicate), this.avoidEntityTargeting, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ());
+       return false;
     }
 
     Vec3 avoidDirection = this.mob.position().subtract(this.toAvoid.position()).normalize().scale(16.0);
@@ -84,8 +85,9 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
   }
 
   public void stop() {
-    this.toAvoid = null;
-      ((GoblinEntity) this.mob).isFleeing(false);
+    //this.toAvoid = null;
+    ((GoblinEntity) this.mob).isFleeing(false);
+   // this.mob.discard();
   }
 
   @Override
@@ -103,7 +105,18 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
     Vec3 avoidPosition = this.mob.position().add(avoidDirection);
 
     this.path = this.pathNav.createPath(avoidPosition.x, avoidPosition.y, avoidPosition.z, 0);
+    // Check if the Goblin still has line of sight to the player
+    if (this.mob.hasLineOfSight(this.toAvoid)) {
+      this.timeWithoutLineOfSight = 0; // Reset the counter if the player is in sight
+    } else {
+      this.timeWithoutLineOfSight++; // Increment the counter if the player is out of sight
+    }
 
+    // Check if the mob should despawn after 15 seconds out of sight (300 ticks)
+    if (this.timeWithoutLineOfSight > 300) {
+      this.mob.discard(); // Despawn the goblin
+      System.out.println("Goblin despawn");
+    }
   }
 
 }
