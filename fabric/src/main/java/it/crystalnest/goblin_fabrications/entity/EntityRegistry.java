@@ -3,6 +3,7 @@ package it.crystalnest.goblin_fabrications.entity;
 import it.crystalnest.cobweb.api.registry.Register;
 import it.crystalnest.goblin_fabrications.Constants;
 import it.crystalnest.goblin_fabrications.ModLoader;
+import it.crystalnest.goblin_fabrications.config.ModConfig;
 import it.crystalnest.goblin_fabrications.entity.custom.GoblinEntity;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -35,14 +36,14 @@ public final class EntityRegistry {
         registerEntitySpawns();
     }
 
-    private static void registerEntitySpawns() {
+    public static void registerEntitySpawns() {
         BiomeModifications.addSpawn(
                 BiomeSelectors.includeByKey(Biomes.PLAINS),
                 MobCategory.CREATURE,
                 GOBLIN,
-                100000, // Spawn weight (rarer with lower value)
-                1,  // Minimum spawn group size
-                1   // Maximum spawn group size
+                ModConfig.getSpawnWeight(), // Configurable spawn weight
+                ModConfig.getMinSpawnSize(), // Configurable minimum spawn group size
+                ModConfig.getMaxSpawnSize()  // Configurable maximum spawn group size
         );
 
         // Optional: Set spawn placement rules (e.g., ground spawns)
