@@ -6,7 +6,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -25,9 +24,6 @@ public final class ModConfig extends CommonConfig {
   private ModConfigSpec.ConfigValue<List<String>> biomes;
   //private ModConfigSpec.ConfigValue<List<Map<String, Object>>> customLootTable;
 
-  /**
-   * @param builder configuration builder.
-   */
   /**
    * @param builder configuration builder.
    */
@@ -115,9 +111,6 @@ public final class ModConfig extends CommonConfig {
    * @return the list of biome RegistryKeys.
    */
   public static List<ResourceLocation> getBiomes() {
-    return CONFIG.biomes.get().stream()
-            .map(ResourceLocation::new)
-            .collect(Collectors.toList());
+    return CONFIG.biomes.get().stream().map(ResourceLocation::new).collect(Collectors.toList());
   }
-
 }
