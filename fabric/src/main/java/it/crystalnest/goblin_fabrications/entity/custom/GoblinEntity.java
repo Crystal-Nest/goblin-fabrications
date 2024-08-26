@@ -9,7 +9,9 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -29,6 +31,9 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.object.PlayState;
+
+import java.util.Objects;
+import java.util.function.Predicate;
 
 
 public class GoblinEntity extends Animal implements GeoEntity{
@@ -63,10 +68,16 @@ public class GoblinEntity extends Animal implements GeoEntity{
     @Override
     protected void registerGoals() {
 
+        //this.goalSelector.addGoal(1, new FloatGoal(this));
+        //this.goalSelector.addGoal(1, new OcelotAvoidEntityGoal(this, Player.class, 32.0F, 1.7, 1.7));
+        //this.goalSelector.addGoal(1, new PanicGoal(this, 1.5));
+        //this.goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
+        //this.goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 10.0F));
+
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(3, new GoblinFleeGoal<Player>(this, Player.class, 50.0F, 1.7, 1.7));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 50.0F));
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
+        this.goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
 
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 
@@ -108,6 +119,21 @@ public class GoblinEntity extends Animal implements GeoEntity{
         return cache;
     }
 
+    static class OcelotAvoidEntityGoal<T extends LivingEntity> extends AvoidEntityGoal<T> {
+        private final GoblinEntity goblin;
 
+        public OcelotAvoidEntityGoal(GoblinEntity goblin, Class<T> class_, float f, double d, double e) {
+            super(goblin, class_, f, d, e, Objects.requireNonNull(EntitySelector.NO_CREATIVE_OR_SPECTATOR)::test);
+            this.goblin = goblin;
+        }
+
+        public boolean canUse() {
+            return super.canUse();
+        }
+
+        public boolean canContinueToUse() {
+            return super.canContinueToUse();
+        }
+    }
 
 }
