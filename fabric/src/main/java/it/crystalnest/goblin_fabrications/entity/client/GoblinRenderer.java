@@ -15,6 +15,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 public class GoblinRenderer extends GeoEntityRenderer<GoblinEntity> {
     public GoblinRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new GoblinModel());
+        this.shadowRadius = 0.5f;
         //addRenderLayer(new HumanoidArmorLayer(this));
     }
 
@@ -29,4 +30,8 @@ public class GoblinRenderer extends GeoEntityRenderer<GoblinEntity> {
         //addLayer(new HumanoidArmorLayer(this, new SkeletonModel(context.bakeLayer(modelLayerLocation2)), new SkeletonModel(context.bakeLayer(modelLayerLocation3)), context.getModelManager()));
 
     }
+
+
+
+
 }

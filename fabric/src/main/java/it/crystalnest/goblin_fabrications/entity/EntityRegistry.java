@@ -21,7 +21,8 @@ public final class EntityRegistry {
 
     public static final EntityType<GoblinEntity> GOBLIN = FabricEntityTypeBuilder
             .create(MobCategory.MONSTER, GoblinEntity::new)
-            .dimensions(EntityDimensions.fixed(0.5f, 0.5f))
+            // Rendering issue here
+            .dimensions(EntityDimensions.fixed(0.5f, 2f))
             .build();
 
     private EntityRegistry() {}
@@ -38,6 +39,7 @@ public final class EntityRegistry {
 
     public static void registerEntitySpawns() {
         BiomeModifications.addSpawn(
+                // FIXED BIOMAN FOR NOW
                 BiomeSelectors.includeByKey(Biomes.PLAINS),
                 MobCategory.CREATURE,
                 GOBLIN,

@@ -49,6 +49,7 @@ public class GoblinEntity extends Animal implements GeoEntity{
         this.isFleeing(false);
     }
 
+
     public boolean isFleeing(){
         return this.entityData.get(FLEEING);
     }
@@ -75,6 +76,7 @@ public class GoblinEntity extends Animal implements GeoEntity{
         //this.goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 10.0F));
 
         this.goalSelector.addGoal(1, new FloatGoal(this));
+        this.goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
         this.goalSelector.addGoal(3, new GoblinFleeGoal<Player>(this, Player.class, 50.0F, 1.7, 1.7));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 50.0F));
         this.goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
@@ -135,5 +137,6 @@ public class GoblinEntity extends Animal implements GeoEntity{
             return super.canContinueToUse();
         }
     }
+
 
 }
