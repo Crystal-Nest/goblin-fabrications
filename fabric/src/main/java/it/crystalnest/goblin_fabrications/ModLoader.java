@@ -1,20 +1,15 @@
 package it.crystalnest.goblin_fabrications;
 
-import it.crystalnest.cobweb.api.registry.RegisterProvider;
-import it.crystalnest.goblin_fabrications.entity.EntityRegistry;
-import it.crystalnest.goblin_fabrications.item.ItemRegistry;
 import net.fabricmc.api.ModInitializer;
+import org.jetbrains.annotations.ApiStatus;
 
 /**
  * Mod loader.
  */
-public class ModLoader implements ModInitializer {
-  public static final RegisterProvider REGISTER_PROVIDER = new RegisterProvider(Constants.MOD_ID);
-
+@ApiStatus.Internal
+public final class ModLoader implements ModInitializer {
   @Override
   public void onInitialize() {
     CommonModLoader.init();
-    EntityRegistry.register();
-    ItemRegistry.register();
   }
 }

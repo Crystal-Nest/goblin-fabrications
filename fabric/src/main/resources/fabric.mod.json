@@ -13,14 +13,11 @@
     "sources": "https://github.com/${github_user}/${mod_id_kebab}/tree/${minecraft_version}"
   },
   "license": "${license}",
-  "icon": "${mod_id}.png",
+  "icon": "${mod_id_kebab}.png",
   "environment": "*",
   "entrypoints": {
     "main": [
       "${group}.${mod_id}.ModLoader"
-    ],
-    "client": [
-      "${group}.${mod_id}.ClientModLoader"
     ]
   },
   "mixins": [
@@ -30,8 +27,8 @@
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "fabric-api": "*",
-    "minecraft": "${minecraft_version}",
-    "java": ">=17",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=${java_version}",
     "cobweb": "^${cobweb_version}",
     "forgeconfigapiport": "~${fcap_version}"
   }
