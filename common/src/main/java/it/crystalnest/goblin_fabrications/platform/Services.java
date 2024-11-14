@@ -1,6 +1,7 @@
 package it.crystalnest.goblin_fabrications.platform;
 
 import it.crystalnest.goblin_fabrications.Constants;
+import it.crystalnest.goblin_fabrications.platform.services.EntityHelper;
 import it.crystalnest.goblin_fabrications.platform.services.PlatformHelper;
 
 import java.util.ServiceLoader;
@@ -14,6 +15,11 @@ public final class Services {
    * Provides information about what platform the mod is running on.
    */
   public static final PlatformHelper PLATFORM = load(PlatformHelper.class);
+
+  /**
+   * Provides utility methods to register different entity-related properties.
+   */
+  public static final EntityHelper ENTITY = load(EntityHelper.class);
 
   private Services() {}
 

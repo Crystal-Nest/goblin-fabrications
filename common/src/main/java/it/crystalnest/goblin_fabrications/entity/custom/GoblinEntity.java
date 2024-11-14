@@ -2,6 +2,7 @@ package it.crystalnest.goblin_fabrications.entity.custom;
 
 import it.crystalnest.goblin_fabrications.goals.custom.GoblinFleeGoal;
 
+import it.crystalnest.goblin_fabrications.platform.Services;
 import net.minecraft.network.syncher.EntityDataAccessor;
 
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -29,7 +30,6 @@ import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
-import software.bernie.geckolib.animation.*;
 
 
 import java.util.Objects;
@@ -46,6 +46,7 @@ public class GoblinEntity extends synx implements GeoEntity{
     public GoblinEntity(EntityType<? extends GoblinEntity> entityType, Level level) {
         super(entityType, level);
         this.isFleeing(false);
+        Services.ENTITY.registerEntityAttributes(entityType, setAttributes());
     }
 
 
@@ -55,7 +56,7 @@ public class GoblinEntity extends synx implements GeoEntity{
     public void isFleeing(boolean isFleeing){
         this.entityData.set(FLEEING, isFleeing);
     }
-    public static AttributeSupplier.Builder setAttributers() {
+    public static AttributeSupplier.Builder setAttributes() {
         return Animal.createLivingAttributes()
           .add(Attributes.MAX_HEALTH, 16.0f)
           .add(Attributes.ATTACK_DAMAGE, 4.0f)

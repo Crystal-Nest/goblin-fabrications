@@ -1,7 +1,6 @@
 package it.crystalnest.goblin_fabrications.item;
 
 import it.crystalnest.cobweb.api.registry.Register;
-import it.crystalnest.goblin_fabrications.ModLoader;
 import it.crystalnest.goblin_fabrications.entity.EntityRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.registries.BuiltInRegistries;
