@@ -14,6 +14,7 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 - Release notes...
 
 [Unreleased]: https://github.com/crystal-nest/goblin-fabrications
+
 [README]: https://github.com/crystal-nest/goblin-fabrications#readme
 
 [1.0.0]: https://github.com/crystal-nest/goblin-fabrications/releases?q=1.0.0

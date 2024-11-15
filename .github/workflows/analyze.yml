@@ -2,7 +2,7 @@ name: Analyze Workflow
 
 on:
   workflow_dispatch:
-     
+
 jobs:
   call-analyze-workflow:
     uses: crystal-nest/.github/.github/workflows/analyze.yml@main

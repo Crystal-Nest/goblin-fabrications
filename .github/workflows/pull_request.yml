@@ -2,7 +2,7 @@ name: Pull Request Workflow
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize, ready_for_review, review_requested] 
+    types: [ opened, reopened, synchronize, ready_for_review, review_requested ]
 
 jobs:
   call-analyze-workflow:

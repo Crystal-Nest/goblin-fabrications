@@ -2,7 +2,7 @@ name: Single Release Workflow
 
 on:
   workflow_dispatch:
-     inputs:
+    inputs:
       loader_forge:
         type: boolean
         description: Forge Loader
@@ -34,7 +34,7 @@ on:
       platform_modrinth:
         type: boolean
         description: Publish to Modrinth
-        default: false 
+        default: false
 
 jobs:
   call-analyze-workflow:
@@ -44,7 +44,7 @@ jobs:
     secrets: inherit
   call-release-workflow:
     needs: call-analyze-workflow
-    permissions: 
+    permissions:
       contents: write
       packages: write
     uses: crystal-nest/.github/.github/workflows/single_release.yml@main

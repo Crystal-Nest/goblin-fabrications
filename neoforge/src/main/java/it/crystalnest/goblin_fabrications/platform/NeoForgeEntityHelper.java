@@ -8,16 +8,25 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import org.apache.commons.lang3.tuple.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
 
 @EventBusSubscriber(modid = Constants.MOD_ID)
 public class NeoForgeEntityHelper implements EntityHelper {
-  @Override
-  public void registerEntityAttributes(EntityType<? extends LivingEntity> entityType, AttributeSupplier.Builder attributesBuilder) {
+  private static final List<Pair<Supplier<? extends EntityType<? extends LivingEntity>>, AttributeSupplier>> ENTITY_ATTRIBUTES = new ArrayList<>();
 
+  @SubscribeEvent
+  private static void registerEntityAttributes(EntityAttributeCreationEvent event) {
+    for (Pair<Supplier<? extends EntityType<? extends LivingEntity>>, AttributeSupplier> pair : ENTITY_ATTRIBUTES) {
+      event.put(pair.getKey().get(), pair.getValue());
+    }
   }
 
-  @SubscribeEvent()
-  public void test(EntityAttributeCreationEvent event) {
-    event.put();
+  @Override
+  public void registerEntityAttributes(Supplier<? extends EntityType<? extends LivingEntity>> entityType, AttributeSupplier attributes) {
+    ENTITY_ATTRIBUTES.add(Pair.of(entityType, attributes));
   }
 }

@@ -1,19 +1,19 @@
 package it.crystalnest.goblin_fabrications.item;
 
-import it.crystalnest.cobweb.api.registry.Register;
+import it.crystalnest.cobweb.api.registry.CobwebEntry;
+import it.crystalnest.cobweb.api.registry.CobwebRegister;
+import it.crystalnest.cobweb.api.registry.CobwebRegistry;
+import it.crystalnest.goblin_fabrications.Constants;
 import it.crystalnest.goblin_fabrications.entity.EntityRegistry;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 
 public final class ItemRegistry {
-    private static final Register<Item> ITEM_REGISTER = ModLoader.REGISTER_PROVIDER.of(BuiltInRegistries.ITEM);
-    public static final Item GOBLIN_SPAWN_EGG = new SpawnEggItem(EntityRegistry.GOBLIN, 0xDD4477, 0x909733, new FabricItemSettings());
+  private static final CobwebRegister<Item> ITEMS = CobwebRegistry.ofItems(Constants.MOD_ID);
 
-    private ItemRegistry() {}
+  public static final CobwebEntry<Item> GOBLIN_EXPLORER_SPAWN_EGG = ITEMS.register("goblin_explorer_spawn_egg", () -> new SpawnEggItem(EntityRegistry.GOBLIN_EXPLORER.get(), 0xDD4477, 0x909733, new Item.Properties()));
 
-    public static void register() {
-        ITEM_REGISTER.apply("goblin_spawn_egg", GOBLIN_SPAWN_EGG);
-    }
+  private ItemRegistry() {}
+
+  public static void register() {}
 }

@@ -22,10 +22,10 @@ tasks.register("publishAll") {
 }
 
 subprojects {
-    repositories {
-        maven {
-            name = 'GeckoLib'
-            url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-        }
+  repositories {
+    maven {
+      name = 'GeckoLib'
+      url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
     }
+  }
 }

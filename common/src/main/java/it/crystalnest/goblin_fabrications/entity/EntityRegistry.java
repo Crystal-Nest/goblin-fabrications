@@ -5,9 +5,11 @@ import it.crystalnest.cobweb.api.registry.CobwebRegistry;
 import it.crystalnest.goblin_fabrications.Constants;
 import it.crystalnest.goblin_fabrications.config.ModConfig;
 import it.crystalnest.goblin_fabrications.entity.custom.GoblinEntity;
+import it.crystalnest.goblin_fabrications.platform.Services;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biomes;
 
 import java.util.function.Supplier;
@@ -26,10 +28,10 @@ public final class EntityRegistry {
   private EntityRegistry() {}
 
   public static void register() {
+    Services.ENTITY.registerEntityAttributes(GOBLIN_EXPLORER, GoblinEntity.buildAttributes());
 
     // Registering the entity attributes
-    // FabricDefaultAttributeRegistry.register(GOBLIN, GoblinEntity.setAttributes());
-
+    // FabricDefaultAttributeRegistry.register(GOBLIN, GoblinEntity.buildAttributes());
 
     // Register spawn rules
     registerEntitySpawns();
