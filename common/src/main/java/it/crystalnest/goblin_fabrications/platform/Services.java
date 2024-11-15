@@ -3,6 +3,7 @@ package it.crystalnest.goblin_fabrications.platform;
 import it.crystalnest.goblin_fabrications.Constants;
 import it.crystalnest.goblin_fabrications.platform.services.EntityHelper;
 import it.crystalnest.goblin_fabrications.platform.services.PlatformHelper;
+import it.crystalnest.goblin_fabrications.platform.services.SpawnHelper;
 
 import java.util.ServiceLoader;
 
@@ -21,6 +22,10 @@ public final class Services {
    */
   public static final EntityHelper ENTITY = load(EntityHelper.class);
 
+  /**
+   * Provides utility methods to register the spawn behavior.
+   */
+  public static final SpawnHelper SPAWN = load(SpawnHelper.class);
   private Services() {}
 
   /**

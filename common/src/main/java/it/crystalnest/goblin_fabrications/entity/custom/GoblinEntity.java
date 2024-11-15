@@ -32,8 +32,6 @@ import software.bernie.geckolib.animation.AnimationController;
 import java.util.Objects;
 
 public class GoblinEntity extends Synx implements GeoEntity {
-  private static final EntityDataAccessor<Boolean> FLEEING = SynchedEntityData.defineId(GoblinEntity.class, EntityDataSerializers.BOOLEAN);
-
   private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
   public GoblinEntity(EntityType<? extends GoblinEntity> entityType, Level level) {
@@ -52,13 +50,6 @@ public class GoblinEntity extends Synx implements GeoEntity {
       .build();
   }
 
-  public boolean isFleeing() {
-    return this.entityData.get(FLEEING);
-  }
-
-  public void isFleeing(boolean isFleeing) {
-    this.entityData.set(FLEEING, isFleeing);
-  }
 
   @Override
   protected void registerGoals() {
@@ -93,12 +84,6 @@ public class GoblinEntity extends Synx implements GeoEntity {
   @Override
   public AgeableMob getBreedOffspring(@NotNull ServerLevel serverLevel, @NotNull AgeableMob ageableMob) {
     return null;
-  }
-
-  @Override
-  protected void defineSynchedData(SynchedEntityData.@NotNull Builder pBuild) {
-    super.defineSynchedData(pBuild);
-    this.entityData.set(FLEEING, false);
   }
 
   @Override

@@ -24,6 +24,5 @@ public class GoblinRenderer extends GeoEntityRenderer<GoblinEntity> {
   @Override
   public void render(@NotNull GoblinEntity entity, float entityYaw, float partialTick, @NotNull PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight) {
     super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
-    //addLayer(new HumanoidArmorLayer(this, new SkeletonModel(context.bakeLayer(modelLayerLocation2)), new SkeletonModel(context.bakeLayer(modelLayerLocation3)), context.getModelManager()));
   }
 }

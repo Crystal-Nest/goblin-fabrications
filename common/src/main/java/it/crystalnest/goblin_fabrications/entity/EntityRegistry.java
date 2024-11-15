@@ -12,6 +12,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biomes;
 
+import java.util.Arrays;
 import java.util.function.Supplier;
 
 public final class EntityRegistry {
@@ -28,27 +29,11 @@ public final class EntityRegistry {
   private EntityRegistry() {}
 
   public static void register() {
+    // Register entity attributes (this registers the attributes such as health, attack, etc. for GoblinExplorer)
     Services.ENTITY.registerEntityAttributes(GOBLIN_EXPLORER, GoblinEntity.buildAttributes());
 
-    // Registering the entity attributes
-    // FabricDefaultAttributeRegistry.register(GOBLIN, GoblinEntity.buildAttributes());
-
-    // Register spawn rules
-    registerEntitySpawns();
+    // Register spawn rules for the GoblinExplorer in specific biomes
+    Services.SPAWN.registerSpawn(GOBLIN_EXPLORER.get(), MobCategory.CREATURE, 10, 2, 5, Arrays.asList(Biomes.FOREST, Biomes.PLAINS));
   }
 
-  public static void registerEntitySpawns() {
-    BiomeModifications.addSpawn(
-      // FIXED BIOMAN FOR NOW
-      BiomeSelectors.includeByKey(Biomes.PLAINS),
-      MobCategory.CREATURE,
-      GOBLIN,
-      ModConfig.getSpawnWeight(), // Configurable spawn weight
-      ModConfig.getMinSpawnSize(), // Configurable minimum spawn group size
-      ModConfig.getMaxSpawnSize()  // Configurable maximum spawn group size
-    );
-
-    // Optional: Set spawn placement rules (e.g., ground spawns)
-    //SpawnPlacements.register(GOBLIN, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GoblinEntity::checkGoblinSpawnRules);
-  }
 }
