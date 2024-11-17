@@ -21,8 +21,8 @@ public class GoblinRenderer extends GeoEntityRenderer<GoblinEntity> {
     return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/entity/goblin.png");
   }
 
-  @Override
+  /* @Override
   public void render(@NotNull GoblinEntity entity, float entityYaw, float partialTick, @NotNull PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int packedLight) {
     super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
-  }
+  }*/
 }

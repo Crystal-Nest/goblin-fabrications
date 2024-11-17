@@ -7,23 +7,28 @@ import net.minecraft.util.Mth;
 import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
 
-public class GoblinModel extends GeoModel<GoblinEntity> {
+public class GoblinModel extends DefaultedEntityGeoModel<GoblinEntity> {
+  public GoblinModel() {
+    super(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "goblin"), true);
+  }
+
   @Override
   public ResourceLocation getModelResource(GoblinEntity animatable) {
-    return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "geo/goblin.geo.json");
+    return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "geo/entity/goblin.geo.json");
   }
 
   @Override
   public ResourceLocation getTextureResource(GoblinEntity animatable) {
-    return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/entity/goblin.png");
+    return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/entity/entity/goblin.png");
   }
 
   @Override
   public ResourceLocation getAnimationResource(GoblinEntity animatable) {
-    return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "animations/goblin.animation.json");
+    return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "animations/entity/goblin.animation.json");
   }
 
   @Override

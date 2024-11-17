@@ -1,10 +1,16 @@
 package it.crystalnest.goblin_fabrications.entity.custom;
 
 import it.crystalnest.goblin_fabrications.goals.custom.GoblinFleeGoal;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
@@ -20,6 +26,8 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoAnimatable;
@@ -36,7 +44,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
 
   public GoblinEntity(EntityType<? extends GoblinEntity> entityType, Level level) {
     super(entityType, level);
-    this.isFleeing(false);
+    // this.isFleeing(false);
   }
 
   public static AttributeSupplier buildAttributes() {
@@ -46,7 +54,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
       .add(Attributes.ATTACK_SPEED, 2.0f)
       .add(Attributes.MOVEMENT_SPEED, 0.3)
       .add(Attributes.FOLLOW_RANGE, 5.0)
-      .add(Attributes.JUMP_STRENGTH, 2.5f)
+      .add(Attributes.JUMP_STRENGTH, 0.5f)
       .build();
   }
 
@@ -107,4 +115,54 @@ public class GoblinEntity extends Synx implements GeoEntity {
       return super.canContinueToUse();
     }
   }
+
+  @Override
+  public void tick() {
+    super.tick();
+
+    // Check if the entity is in water
+    if (this.isInWater()) {
+      // Check if the mob already has Dolphin's Grace
+      if (!this.hasEffect(MobEffects.DOLPHINS_GRACE)) {
+        this.addEffect(new MobEffectInstance(
+          MobEffects.DOLPHINS_GRACE, // The effect
+          200,                     // Duration in ticks (10 seconds)
+          2,                       // Amplifier (Dolphin's Grace I)
+          false,                   // Ambient particles
+          false                    // Show particles
+        ));
+      }
+    } else {
+      // Remove the effect when the mob is out of water
+      this.removeEffect(MobEffects.DOLPHINS_GRACE);
+    }
+  }
+/*@Override
+  public void travel(Vec3 movement) {
+    if (this.isInWater()) {
+      this.setDeltaMovement(this.getDeltaMovement().multiply(1.2, 1.0, 1.2)); // Increase speed in water
+    }
+    super.travel(movement);
+  }*/
+  @Override
+  protected SoundEvent getAmbientSound() {
+    return SoundEvents.RABBIT_AMBIENT;
+  }
+
+  @Override
+  protected SoundEvent getHurtSound(DamageSource damageSource) {
+    return SoundEvents.RABBIT_HURT;
+  }
+
+  @Override
+  protected SoundEvent getDeathSound() {
+    return SoundEvents.RABBIT_DEATH;
+  }
+
+  @Override
+  protected void playStepSound(BlockPos pos, BlockState blockIn) {
+    this.playSound(SoundEvents.CHICKEN_STEP, 0.15F, 1.0F); // Example: Zombie step sound
+  }
 }
+
+

@@ -84,7 +84,6 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
 
   public void start() {
     this.pathNav.moveTo(this.path, this.walkSpeedModifier);
-
     ((GoblinEntity) this.mob).isFleeing(true);
   }
 

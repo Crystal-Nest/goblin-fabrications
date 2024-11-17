@@ -17,6 +17,7 @@ public abstract class Synx extends Animal {
   public Synx(EntityType<? extends Animal> pEntityType, Level pLevel) {
     super(pEntityType, pLevel);
   }
+
   private static final EntityDataAccessor<Boolean> FLEEING = SynchedEntityData.defineId(Synx.class, EntityDataSerializers.BOOLEAN);
 
   protected PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
@@ -38,10 +39,10 @@ public abstract class Synx extends Animal {
   public boolean isFleeing() {
     return this.entityData.get(FLEEING);
   }
-  @Override
-  protected void defineSynchedData(SynchedEntityData.@NotNull Builder pBuild) {
-    super.defineSynchedData(pBuild);
-    this.entityData.set(FLEEING, false);
+  protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+    super.defineSynchedData(pBuilder);
+    pBuilder.define(FLEEING, false);
   }
+
 
 }

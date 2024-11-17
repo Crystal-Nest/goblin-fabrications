@@ -21,7 +21,7 @@ public final class EntityRegistry {
 
   public static final Supplier<EntityType<GoblinEntity>> GOBLIN_EXPLORER = ENTITY_TYPES.register(
     "goblin_explorer",
-    () -> EntityType.Builder.of(GoblinEntity::new, MobCategory.MONSTER)
+    () -> EntityType.Builder.of(GoblinEntity::new, MobCategory.CREATURE)
       .sized(0.5f, 2)
       .build(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "goblin_explorer").toString())
   );
