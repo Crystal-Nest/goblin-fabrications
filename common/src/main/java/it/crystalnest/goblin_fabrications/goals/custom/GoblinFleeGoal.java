@@ -89,7 +89,7 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
 
   public void stop() {
     //this.toAvoid = null;
-    ((GoblinEntity) this.mob).isFleeing(false);
+   // ((GoblinEntity) this.mob).isFleeing(false);
     // this.mob.discard();
   }
 

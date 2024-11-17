@@ -2,9 +2,12 @@ package it.crystalnest.goblin_fabrications.entity.custom;
 
 import it.crystalnest.goblin_fabrications.goals.custom.GoblinFleeGoal;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -27,7 +30,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
+import org.intellij.lang.annotations.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoAnimatable;
@@ -69,13 +74,18 @@ public class GoblinEntity extends Synx implements GeoEntity {
     //this.goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 10.0F));
 
     this.goalSelector.addGoal(1, new FloatGoal(this));
-    this.goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
+    this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
     this.goalSelector.addGoal(3, new GoblinFleeGoal<Player>(this, Player.class, 50.0F, 1.7, 1.7));
-    this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 50.0F));
-    this.goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
+    this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 50.0F));
+    this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
-    this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+  }
 
+  protected @NotNull ResourceKey<LootTable> getDefaultLootTable() {
+    return ResourceKey.create(
+      Registries.LOOT_TABLE,
+      ResourceLocation.fromNamespaceAndPath("goblin_fabrications", "entities/goblin_explorer")
+    );
   }
 
   @Override

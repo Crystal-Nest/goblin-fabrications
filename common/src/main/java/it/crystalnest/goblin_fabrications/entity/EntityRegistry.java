@@ -22,7 +22,7 @@ public final class EntityRegistry {
   public static final Supplier<EntityType<GoblinEntity>> GOBLIN_EXPLORER = ENTITY_TYPES.register(
     "goblin_explorer",
     () -> EntityType.Builder.of(GoblinEntity::new, MobCategory.CREATURE)
-      .sized(0.5f, 2)
+      .sized(0.5f, 0.9f).clientTrackingRange(8)
       .build(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "goblin_explorer").toString())
   );
 
@@ -33,7 +33,7 @@ public final class EntityRegistry {
     Services.ENTITY.registerEntityAttributes(GOBLIN_EXPLORER, GoblinEntity.buildAttributes());
 
     // Register spawn rules for the GoblinExplorer in specific biomes
-    Services.SPAWN.registerSpawn(GOBLIN_EXPLORER.get(), MobCategory.CREATURE, 10, 2, 5, Arrays.asList(Biomes.FOREST, Biomes.PLAINS));
+    Services.SPAWN.registerSpawn(GOBLIN_EXPLORER.get(), MobCategory.CREATURE, 10, 1, 1, Arrays.asList(Biomes.FOREST, Biomes.PLAINS));
   }
 
 }

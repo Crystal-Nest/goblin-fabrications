@@ -3,6 +3,8 @@ package it.crystalnest.goblin_fabrications.entity.custom;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.Level;
@@ -23,10 +25,21 @@ public abstract class Synx extends Animal {
   protected PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
     if (this.isFleeing()) {
       geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("flee", Animation.LoopType.LOOP));
+
+      // Play fleeing sound
+      if (!this.level().isClientSide) { // Ensure the sound plays on the server
+        this.level().playSound(
+          null, // Player to notify, null means no specific player
+          this.blockPosition(), // Position to play the sound
+          SoundEvents.RABBIT_HURT, // Replace with your fleeing sound
+          SoundSource.HOSTILE, // Category of sound
+          1.0F, // Volume
+          1.0F + (this.level().random.nextFloat() - this.level().random.nextFloat()) * 0.2F // Pitch variation
+        );
+      }
     } else {
       if (geoAnimatableAnimationState.isMoving()) {
         geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("walk", Animation.LoopType.LOOP));
-
       } else {
         geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
       }
