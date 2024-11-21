@@ -1,12 +1,12 @@
 {
   "type": "forge:add_spawns",
-  "biomes": "#minecraft:is_forest", // Targets all forest biomes
+  "biomes": "#minecraft:is_forest",
   "spawners": [
     {
-      "type": "<modid>:goblin_explorer", // Your custom entity ID
-      "weight": 10,                    // Spawn weight
-      "minCount": 2,                   // Minimum group size
-      "maxCount": 4                    // Maximum group size
+      "type": "goblin_fabrications:goblin_explorer",
+      "weight": 10,
+      "minCount": 2,
+      "maxCount": 4
     }
   ]
 }

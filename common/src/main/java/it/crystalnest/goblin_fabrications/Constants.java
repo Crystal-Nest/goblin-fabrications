@@ -13,6 +13,11 @@ public final class Constants {
   public static final String MOD_ID = "goblin_fabrications";
 
   /**
+   * GOBLIN_EXPLORER_ID Mob id.
+   */
+  public static final String GOBLIN_EXPLORER_ID = "goblin_explorer";
+
+  /**
    * Mod logger.
    */
   public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);

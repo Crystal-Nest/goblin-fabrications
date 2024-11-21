@@ -22,7 +22,7 @@ public final class ModConfig extends CommonConfig {
 
   private ModConfigSpec.IntValue maxSpawnSize;
 
-  private ModConfigSpec.ConfigValue<List<String>> biomes;
+  private ModConfigSpec.ConfigValue<List<? extends String>> biomes;
   //private ModConfigSpec.ConfigValue<List<Map<String, Object>>> customLootTable;
 
   /**
@@ -60,6 +60,15 @@ public final class ModConfig extends CommonConfig {
    */
   public static int getMaxSpawnSize() {
     return CONFIG.maxSpawnSize.get();
+  }
+
+  /**
+   * Returns the biomes as read from the configuration file.
+   *
+   * @return the biomes.
+   */
+  public static List<? extends String> getBiomes() {
+    return CONFIG.biomes.get();
   }
 
   @Override
@@ -101,7 +110,7 @@ public final class ModConfig extends CommonConfig {
 
     biomes = builder
       .comment("List of biomes where Goblins can spawn (e.g., [\"minecraft:plains\", \"minecraft:forest\"])")
-      .define("biomes", List.of("minecraft:plains"));
+      .defineList("biomes", List.of("minecraft:plains"), this::stringListValidator);
 
     builder.pop();
   }

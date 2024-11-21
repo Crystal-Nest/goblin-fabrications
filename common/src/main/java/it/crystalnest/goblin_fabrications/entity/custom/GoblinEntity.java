@@ -1,5 +1,6 @@
 package it.crystalnest.goblin_fabrications.entity.custom;
 
+import it.crystalnest.goblin_fabrications.Constants;
 import it.crystalnest.goblin_fabrications.goals.custom.GoblinFleeGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -78,14 +79,11 @@ public class GoblinEntity extends Synx implements GeoEntity {
     this.goalSelector.addGoal(3, new GoblinFleeGoal<Player>(this, Player.class, 50.0F, 1.7, 1.7));
     this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 50.0F));
     this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
-
   }
 
+  @Override
   protected @NotNull ResourceKey<LootTable> getDefaultLootTable() {
-    return ResourceKey.create(
-      Registries.LOOT_TABLE,
-      ResourceLocation.fromNamespaceAndPath("goblin_fabrications", "entities/goblin_explorer")
-    );
+    return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "entities/goblin_explorer"));
   }
 
   @Override

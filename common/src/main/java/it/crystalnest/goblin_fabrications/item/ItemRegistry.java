@@ -23,5 +23,4 @@ public final class ItemRegistry {
   private ItemRegistry() {}
 
   public static void register() {}
-
 }
