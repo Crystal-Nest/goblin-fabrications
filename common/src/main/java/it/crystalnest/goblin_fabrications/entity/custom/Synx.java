@@ -18,6 +18,7 @@ import software.bernie.geckolib.animation.RawAnimation;
 public abstract class Synx extends Animal {
   public Synx(EntityType<? extends Animal> pEntityType, Level pLevel) {
     super(pEntityType, pLevel);
+
   }
 
   private static final EntityDataAccessor<Boolean> FLEEING = SynchedEntityData.defineId(Synx.class, EntityDataSerializers.BOOLEAN);

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-@EventBusSubscriber(modid = Constants.MOD_ID)
+@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class NeoForgeEntityHelper implements EntityHelper {
   private static final List<Pair<Supplier<? extends EntityType<? extends LivingEntity>>, AttributeSupplier>> ENTITY_ATTRIBUTES = new ArrayList<>();
 
@@ -26,7 +26,7 @@ public class NeoForgeEntityHelper implements EntityHelper {
   }
 
   @Override
-  public void registerEntityAttributes(Supplier<? extends EntityType<? extends LivingEntity>> entityType, AttributeSupplier attributes) {
-    ENTITY_ATTRIBUTES.add(Pair.of(entityType, attributes));
+  public void registerEntityAttributes(Supplier<? extends EntityType<? extends LivingEntity>> entityType, AttributeSupplier.Builder attributes) {
+    ENTITY_ATTRIBUTES.add(Pair.of(entityType, attributes.build()));
   }
 }

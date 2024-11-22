@@ -10,7 +10,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 /**
  * Handles entity related events.
  */
-@EventBusSubscriber(modid = Constants.MOD_ID)
+@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public final class EntityEventsHandler {
   private EntityEventsHandler() {}
 
@@ -24,4 +24,5 @@ public final class EntityEventsHandler {
   private static void handle(EntityRenderersEvent.RegisterRenderers event) {
     event.registerEntityRenderer(EntityRegistry.GOBLIN_EXPLORER.get(), GoblinRenderer::new);
   }
+
 }

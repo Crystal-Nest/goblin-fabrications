@@ -21,10 +21,6 @@ public final class Services {
    */
   public static final EntityHelper ENTITY = load(EntityHelper.class);
 
-  /**
-   * Provides utility methods to register the spawn behavior.
-   */
-  public static final SpawnHelper SPAWN = load(SpawnHelper.class);
   private Services() {}
 
   /**

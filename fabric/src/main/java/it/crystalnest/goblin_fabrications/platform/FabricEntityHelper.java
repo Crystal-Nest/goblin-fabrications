@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public class FabricEntityHelper implements EntityHelper {
   @Override
-  public void registerEntityAttributes(Supplier<? extends EntityType<? extends LivingEntity>> entityType, AttributeSupplier attributes) {
+  public void registerEntityAttributes(Supplier<? extends EntityType<? extends LivingEntity>> entityType, AttributeSupplier.Builder attributes) {
     FabricDefaultAttributeRegistry.register(entityType.get(), attributes);
   }
 }

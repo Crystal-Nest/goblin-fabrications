@@ -53,16 +53,18 @@ public class GoblinEntity extends Synx implements GeoEntity {
     // this.isFleeing(false);
   }
 
-  public static AttributeSupplier buildAttributes() {
-    return Animal.createLivingAttributes()
+  public static AttributeSupplier.Builder buildAttributes() {
+    return LivingEntity.createLivingAttributes()
       .add(Attributes.MAX_HEALTH, 16.0f)
       .add(Attributes.ATTACK_DAMAGE, 4.0f)
       .add(Attributes.ATTACK_SPEED, 2.0f)
       .add(Attributes.MOVEMENT_SPEED, 0.3)
       .add(Attributes.FOLLOW_RANGE, 5.0)
       .add(Attributes.JUMP_STRENGTH, 0.5f)
-      .build();
+      .add(Attributes.WATER_MOVEMENT_EFFICIENCY, 1f);
+
   }
+
 
 
   @Override
@@ -145,6 +147,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
       this.removeEffect(MobEffects.DOLPHINS_GRACE);
     }
   }
+
 /*@Override
   public void travel(Vec3 movement) {
     if (this.isInWater()) {
@@ -164,7 +167,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
 
   @Override
   protected SoundEvent getDeathSound() {
-    return SoundEvents.RABBIT_DEATH;
+    return SoundEvents.FOX_DEATH;
   }
 
   @Override
