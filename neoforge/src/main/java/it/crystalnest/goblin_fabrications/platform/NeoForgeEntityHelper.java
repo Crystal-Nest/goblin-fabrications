@@ -16,17 +16,17 @@ import java.util.function.Supplier;
 
 @EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class NeoForgeEntityHelper implements EntityHelper {
-  private static final List<Pair<Supplier<? extends EntityType<? extends LivingEntity>>, AttributeSupplier>> ENTITY_ATTRIBUTES = new ArrayList<>();
+  private static final List<Pair<Supplier<? extends EntityType<? extends LivingEntity>>, Supplier<AttributeSupplier.Builder>>> ENTITY_ATTRIBUTES = new ArrayList<>();
 
   @SubscribeEvent
   private static void registerEntityAttributes(EntityAttributeCreationEvent event) {
-    for (Pair<Supplier<? extends EntityType<? extends LivingEntity>>, AttributeSupplier> pair : ENTITY_ATTRIBUTES) {
-      event.put(pair.getKey().get(), pair.getValue());
+    for (Pair<Supplier<? extends EntityType<? extends LivingEntity>>, Supplier<AttributeSupplier.Builder>> pair : ENTITY_ATTRIBUTES) {
+      event.put(pair.getKey().get(), pair.getValue().get().build());
     }
   }
 
   @Override
-  public void registerEntityAttributes(Supplier<? extends EntityType<? extends LivingEntity>> entityType, AttributeSupplier.Builder attributes) {
-    ENTITY_ATTRIBUTES.add(Pair.of(entityType, attributes.build()));
+  public void registerEntityAttributes(Supplier<? extends EntityType<? extends LivingEntity>> entityType, Supplier<AttributeSupplier.Builder> attributes) {
+    ENTITY_ATTRIBUTES.add(Pair.of(entityType, attributes));
   }
 }

@@ -16,7 +16,7 @@ public interface EntityHelper {
    * @param entityType entity type to register the attributes for.
    * @param attributes builder of the attributes to register.
    */
-  void registerEntityAttributes(Supplier<? extends EntityType<? extends LivingEntity>> entityType, AttributeSupplier.Builder attributes);
+  void registerEntityAttributes(Supplier<? extends EntityType<? extends LivingEntity>> entityType, Supplier<AttributeSupplier.Builder> attributes);
 
   //ADD registring egg and loot table
 }

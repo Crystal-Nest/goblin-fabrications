@@ -4,9 +4,6 @@ import it.crystalnest.goblin_fabrications.Constants;
 import it.crystalnest.goblin_fabrications.goals.custom.GoblinFleeGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -26,17 +23,13 @@ import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.phys.Vec3;
-import org.intellij.lang.annotations.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
@@ -53,7 +46,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
     // this.isFleeing(false);
   }
 
-  public static AttributeSupplier.Builder buildAttributes() {
+  public static AttributeSupplier.Builder createAttributes() {
     return LivingEntity.createLivingAttributes()
       .add(Attributes.MAX_HEALTH, 16.0f)
       .add(Attributes.ATTACK_DAMAGE, 4.0f)
@@ -62,10 +55,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
       .add(Attributes.FOLLOW_RANGE, 5.0)
       .add(Attributes.JUMP_STRENGTH, 0.5f)
       .add(Attributes.WATER_MOVEMENT_EFFICIENCY, 1f);
-
   }
-
-
 
   @Override
   protected void registerGoals() {
@@ -78,7 +68,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
 
     this.goalSelector.addGoal(1, new FloatGoal(this));
     this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
-    this.goalSelector.addGoal(3, new GoblinFleeGoal<Player>(this, Player.class, 50.0F, 1.7, 1.7));
+    this.goalSelector.addGoal(3, new GoblinFleeGoal<>(this, Player.class, 50.0F, 1.7, 1.7));
     this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 50.0F));
     this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
   }
@@ -90,7 +80,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
 
   @Override
   public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-    controllers.add(new AnimationController<GeoAnimatable>(this, "controller", this::predicate));
+    controllers.add(new AnimationController<>(this, "controller", this::predicate));
   }
 
   @Override
@@ -161,7 +151,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
   }
 
   @Override
-  protected SoundEvent getHurtSound(DamageSource damageSource) {
+  protected SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
     return SoundEvents.RABBIT_HURT;
   }
 
@@ -171,7 +161,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
   }
 
   @Override
-  protected void playStepSound(BlockPos pos, BlockState blockIn) {
+  protected void playStepSound(@NotNull BlockPos pos, @NotNull BlockState blockIn) {
     this.playSound(SoundEvents.CHICKEN_STEP, 0.15F, 1.0F); // Example: Zombie step sound
   }
 }

@@ -14,8 +14,8 @@ public final class CommonModLoader {
    * Initialize common operations across loaders.
    */
   public static void init() {
-    ModConfig.CONFIG.register();
     EntityRegistry.register();
+    ModConfig.CONFIG.register();
     ItemRegistry.register();
   }
 }

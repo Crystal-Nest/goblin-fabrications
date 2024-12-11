@@ -1,7 +1,6 @@
 package it.crystalnest.goblin_fabrications;
 
 import it.crystalnest.goblin_fabrications.entity.EntityRegistry;
-import it.crystalnest.goblin_fabrications.platform.NeoForgeEntityHelper;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -21,8 +20,5 @@ public final class ModLoader {
   public ModLoader(IEventBus bus) {
     bus.<EntityAttributeCreationEvent>addListener(event -> EntityRegistry.GOBLIN_EXPLORER.get());
     CommonModLoader.init();
-
-
   }
-
 }
