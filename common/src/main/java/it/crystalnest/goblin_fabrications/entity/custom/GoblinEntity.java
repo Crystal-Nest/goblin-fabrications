@@ -13,12 +13,10 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
@@ -35,8 +33,6 @@ import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.animation.AnimationController;
-
-import java.util.Objects;
 
 public class GoblinEntity extends Synx implements GeoEntity {
   private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
@@ -59,12 +55,6 @@ public class GoblinEntity extends Synx implements GeoEntity {
 
   @Override
   protected void registerGoals() {
-
-    //this.goalSelector.addGoal(1, new FloatGoal(this));
-    //this.goalSelector.addGoal(1, new OcelotAvoidEntityGoal(this, Player.class, 32.0F, 1.7, 1.7));
-    //this.goalSelector.addGoal(1, new PanicGoal(this, 1.5));
-    //this.goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
-    //this.goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 10.0F));
 
     this.goalSelector.addGoal(1, new FloatGoal(this));
     this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.8, 1.0000001E-5F));
@@ -99,23 +89,6 @@ public class GoblinEntity extends Synx implements GeoEntity {
     return false;
   }
 
-  static class OcelotAvoidEntityGoal<T extends LivingEntity> extends AvoidEntityGoal<T> {
-    private final GoblinEntity goblin;
-
-    public OcelotAvoidEntityGoal(GoblinEntity goblin, Class<T> class_, float f, double d, double e) {
-      super(goblin, class_, f, d, e, Objects.requireNonNull(EntitySelector.NO_CREATIVE_OR_SPECTATOR)::test);
-      this.goblin = goblin;
-    }
-
-    public boolean canUse() {
-      return super.canUse();
-    }
-
-    public boolean canContinueToUse() {
-      return super.canContinueToUse();
-    }
-  }
-
   @Override
   public void tick() {
     super.tick();
@@ -127,7 +100,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
         this.addEffect(new MobEffectInstance(
           MobEffects.DOLPHINS_GRACE, // The effect
           200,                     // Duration in ticks (10 seconds)
-          2,                       // Amplifier (Dolphin's Grace I)
+          1,                       // Amplifier (Dolphin's Grace I)
           false,                   // Ambient particles
           false                    // Show particles
         ));
