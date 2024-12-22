@@ -16,12 +16,12 @@ import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
 
 public abstract class Synx extends Animal {
+  private static final EntityDataAccessor<Boolean> FLEEING = SynchedEntityData.defineId(Synx.class, EntityDataSerializers.BOOLEAN);
+
   public Synx(EntityType<? extends Animal> pEntityType, Level pLevel) {
     super(pEntityType, pLevel);
 
   }
-
-  private static final EntityDataAccessor<Boolean> FLEEING = SynchedEntityData.defineId(Synx.class, EntityDataSerializers.BOOLEAN);
 
   protected PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
     if (this.isFleeing()) {
@@ -47,16 +47,17 @@ public abstract class Synx extends Animal {
     }
     return PlayState.CONTINUE;
   }
+
   public void isFleeing(boolean isFleeing) {
     this.entityData.set(FLEEING, isFleeing);
   }
+
   public boolean isFleeing() {
     return this.entityData.get(FLEEING);
   }
-  protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
-    super.defineSynchedData(pBuilder);
-    pBuilder.define(FLEEING, false);
+
+  protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
+    super.defineSynchedData(builder);
+    builder.define(FLEEING, false);
   }
-
-
 }

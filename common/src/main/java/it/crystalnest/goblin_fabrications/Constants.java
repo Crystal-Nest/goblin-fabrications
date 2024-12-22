@@ -8,12 +8,17 @@ import org.slf4j.LoggerFactory;
  */
 public final class Constants {
   /**
-   * Mod id.
+   * Mod ID.
    */
   public static final String MOD_ID = "goblin_fabrications";
 
   /**
-   * GOBLIN_EXPLORER_ID Mob id.
+   * Goblin Fabrications creative tab ID.
+   */
+  public static final String GOBLIN_FABRICATIONS_TAB = Constants.MOD_ID + "_tab";
+
+  /**
+   * Goblin Explorer mob ID.
    */
   public static final String GOBLIN_EXPLORER_ID = "goblin_explorer";
 

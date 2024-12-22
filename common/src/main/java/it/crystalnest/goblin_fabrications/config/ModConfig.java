@@ -15,7 +15,6 @@ public final class ModConfig extends CommonConfig {
    */
   public static final ModConfig CONFIG = register(Constants.MOD_ID, ModConfig::new);
 
-
   private ModConfigSpec.IntValue spawnWeight;
 
   private ModConfigSpec.IntValue minSpawnSize;

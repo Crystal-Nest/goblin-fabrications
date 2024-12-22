@@ -47,9 +47,9 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
     this(pathfinderMob, class_, (livingEntity) -> true, f, d, e, Objects.requireNonNull(EntitySelector.NO_CREATIVE_OR_SPECTATOR)::test);
   }
 
-  public GoblinFleeGoal(PathfinderMob pathfinderMob, Class<T> class_, Predicate<LivingEntity> predicate, float f, double d, double e, Predicate<LivingEntity> predicate2) {
+  public GoblinFleeGoal(PathfinderMob pathfinderMob, Class<T> clazz, Predicate<LivingEntity> predicate, float f, double d, double e, Predicate<LivingEntity> predicate2) {
     this.mob = pathfinderMob;
-    this.avoidClass = class_;
+    this.avoidClass = clazz;
     this.avoidPredicate = predicate;
     this.maxDist = f;
     this.walkSpeedModifier = d;
@@ -60,8 +60,8 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
     this.avoidEntityTargeting = TargetingConditions.forCombat().range(f).selector(predicate2.and(predicate));
   }
 
-  public GoblinFleeGoal(PathfinderMob pathfinderMob, Class<T> class_, float f, double d, double e, Predicate<LivingEntity> predicate) {
-    this(pathfinderMob, class_, (livingEntity) -> true, f, d, e, predicate);
+  public GoblinFleeGoal(PathfinderMob pathfinderMob, Class<T> clazz, float f, double d, double e, Predicate<LivingEntity> predicate) {
+    this(pathfinderMob, clazz, (livingEntity) -> true, f, d, e, predicate);
   }
 
   @Override
@@ -89,7 +89,7 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
 
   public void stop() {
     //this.toAvoid = null;
-   // ((GoblinEntity) this.mob).isFleeing(false);
+    // ((GoblinEntity) this.mob).isFleeing(false);
     // this.mob.discard();
   }
 

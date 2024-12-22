@@ -64,6 +64,40 @@ public class GoblinEntity extends Synx implements GeoEntity {
   }
 
   @Override
+  public void tick() {
+    super.tick();
+
+    // Check if the entity is in water
+    if (this.isInWater()) {
+      // Check if the mob already has Dolphin's Grace
+      if (!this.hasEffect(MobEffects.DOLPHINS_GRACE)) {
+        this.addEffect(new MobEffectInstance(
+          MobEffects.DOLPHINS_GRACE, // The effect
+          200,                     // Duration in ticks (10 seconds)
+          1,                       // Amplifier (Dolphin's Grace I)
+          false,                   // Ambient particles
+          false                    // Show particles
+        ));
+      }
+    } else {
+      // Remove the effect when the mob is out of water
+      this.removeEffect(MobEffects.DOLPHINS_GRACE);
+    }
+  }
+
+  /*@Override
+    public void travel(Vec3 movement) {
+      if (this.isInWater()) {
+        this.setDeltaMovement(this.getDeltaMovement().multiply(1.2, 1.0, 1.2)); // Increase speed in water
+      }
+      super.travel(movement);
+    }*/
+  @Override
+  protected SoundEvent getAmbientSound() {
+    return SoundEvents.RABBIT_AMBIENT;
+  }
+
+  @Override
   protected @NotNull ResourceKey<LootTable> getDefaultLootTable() {
     return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "entities/goblin_explorer"));
   }
@@ -87,40 +121,6 @@ public class GoblinEntity extends Synx implements GeoEntity {
   @Override
   public boolean isFood(@NotNull ItemStack itemStack) {
     return false;
-  }
-
-  @Override
-  public void tick() {
-    super.tick();
-
-    // Check if the entity is in water
-    if (this.isInWater()) {
-      // Check if the mob already has Dolphin's Grace
-      if (!this.hasEffect(MobEffects.DOLPHINS_GRACE)) {
-        this.addEffect(new MobEffectInstance(
-          MobEffects.DOLPHINS_GRACE, // The effect
-          200,                     // Duration in ticks (10 seconds)
-          1,                       // Amplifier (Dolphin's Grace I)
-          false,                   // Ambient particles
-          false                    // Show particles
-        ));
-      }
-    } else {
-      // Remove the effect when the mob is out of water
-      this.removeEffect(MobEffects.DOLPHINS_GRACE);
-    }
-  }
-
-/*@Override
-  public void travel(Vec3 movement) {
-    if (this.isInWater()) {
-      this.setDeltaMovement(this.getDeltaMovement().multiply(1.2, 1.0, 1.2)); // Increase speed in water
-    }
-    super.travel(movement);
-  }*/
-  @Override
-  protected SoundEvent getAmbientSound() {
-    return SoundEvents.RABBIT_AMBIENT;
   }
 
   @Override

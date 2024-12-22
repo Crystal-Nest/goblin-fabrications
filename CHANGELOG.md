@@ -9,7 +9,7 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 
 - Nothing new.
 
-## [1.0.0] - yyyy/mm/dd
+## [v1.0.0] - yyyy/mm/dd
 
 - Release notes...
 
@@ -17,4 +17,4 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 
 [README]: https://github.com/crystal-nest/goblin-fabrications#readme
 
-[1.0.0]: https://github.com/crystal-nest/goblin-fabrications/releases?q=1.0.0
+[v1.0.0]: https://github.com/crystal-nest/goblin-fabrications/releases?q=1.0.0

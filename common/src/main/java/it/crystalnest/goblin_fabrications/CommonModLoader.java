@@ -8,7 +8,6 @@ import it.crystalnest.goblin_fabrications.item.ItemRegistry;
  * Common mod loader.
  */
 public final class CommonModLoader {
-
   private CommonModLoader() {}
 
   /**
