@@ -97,7 +97,7 @@ public final class ModConfig extends CommonConfig {
 
     spawnWeight = builder
       .comment("Goblin spawn weight (rarer with lower value)")
-      .defineInRange("spawnWeight", 500, 500, Integer.MAX_VALUE);
+      .defineInRange("spawnWeight", 15, 1, Integer.MAX_VALUE);
 
     minSpawnSize = builder
       .comment("Minimum spawn group size for Goblins")
@@ -109,7 +109,7 @@ public final class ModConfig extends CommonConfig {
 
     biomes = builder
       .comment("List of biomes where Goblins can spawn (e.g., [\"minecraft:plains\", \"minecraft:forest\"])")
-      .defineList("biomes", List.of("minecraft:plains"), this::stringListValidator);
+      .defineList("biomes", List.of("minecraft:plains", "minecraft:forest"), this::stringListValidator);
 
     builder.pop();
   }

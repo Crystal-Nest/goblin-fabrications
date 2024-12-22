@@ -1,8 +1,8 @@
-![Goblin Fabrications banner](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/goblin-fabrications/banner.png "Goblin Fabrications banner")
+![Goblin Fabrications banner](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/goblin-fabrications/goblin_title.png "Goblin Fabrications banner")
 
 ---
 
-![Minecraft](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/minecraft.svg "Minecraft")[![1.21](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-21.svg "1.21")](https://modrinth.com/mod/goblin-fabrications/versions?g=1.21)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![1.20.4](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-20-4.svg "1.20.4")](https://modrinth.com/mod/goblin-fabrications/versions?g=1.20.4)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![1.20.2](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-20-2.svg "1.20.2")](https://modrinth.com/mod/goblin-fabrications/versions?g=1.20.2)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![1.20.1](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-20-1.svg "1.20.1")](https://modrinth.com/mod/goblin-fabrications/versions?g=1.20.1)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![1.19.4](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-19-4.svg "1.19.4")](https://modrinth.com/mod/goblin-fabrications/versions?g=1.19.4)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![1.19.2](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-19-2.svg "1.19.2")](https://modrinth.com/mod/goblin-fabrications/versions?g=1.19.2)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![1.18.2](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-18-2.svg "1.18.2")](https://modrinth.com/mod/goblin-fabrications/versions?g=1.18.2)
+![Minecraft](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/minecraft.svg "Minecraft")[![1.21](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-21.svg "1.21")]
 
 ![Loader](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/loader/loader.svg "Loader")[![NeoForge](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/loader/neoforge.svg "NeoForge")](https://modrinth.com/mod/goblin-fabrications/versions?l=neoforge)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![Fabric](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/loader/fabric.svg "Fabric")](https://modrinth.com/mod/goblin-fabrications/versions?l=fabric)
 
@@ -14,36 +14,58 @@
 
 ## **Description**
 
-Multiloader skeleton for Minecraft mods!  
-Built on [Jared's MultiLoaderTemplate](https://github.com/jaredlll08/MultiLoader-Template), with the addition of:
+Goblin Fabrications brings a new layer of exploration and mischief to your Minecraft world by introducing unique goblin entities, starting with the Goblin Explorer. This cunning creature, known for its rare appearances in plains and forest biomes, carries
+precious treasures like diamond totems, totems of undying, and scraps of netherite. However, catching one is no small feat—these goblins are swift and elusive, teasing players with their mischievous nature.
 
-- Tasks to publish on Maven, GitHub, Modrinth, and CurseForge.
-- [Cobweb](https://modrinth.com/mod/cobweb) API dependency.
-- A little bit more Javadoc.
-- Code style changes.
+While the Goblin Explorer is the first of its kind, there are big plans for future updates that will introduce more goblin types, each with their own traits, items, and challenges. Stay tuned as we expand the world of Goblin Fabrications with new
+creatures and artifacts to enrich your adventures and test your wits!
 
-***Note: the intended use of this template is to create a repository from it, and then update each branch with the content built by our [official generator](https://crystalnest.it/#/generator).***
+## **Features**
 
-## **Setup completion**
+### The elusive Goblin Explorer
 
-To complete the setup:
+The first goblin to make its way into Goblin Fabrications, the **Goblin Explorer**, is a rare and elusive creature with the following characteristics:
 
-- Change the [Support us](#support-us) section and the banner link.
-- Add your project CurseForge ID in the `gradle.properties`.
-- Update the changelog with proper release notes.
+![Goblin Explorer](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/goblin-fabrications/GoblinImg1.png "Goblin Fabrications banner")
 
-## Removing Platforms and Loaders
+#### Core Traits:
 
-While this template includes support for Fabric and NeoForge, you can easily remove support for the ones you don't need.  
-This can be done by deleting the subproject folder and then removing it from the associated `include` in the `settings.gradle` file, along with deleting the related gradle properties.
+- **Fleeing from players**: The Goblin Explorer bolts as soon as it detects a player nearby.
+- **Disappearing act**: If it manages to stay out of a player’s view for too long after its escape, it will vanish entirely.
+- **Rare loot**: Drops rare and valuable materials such as diamonds, totems of undying, or netherite scraps.
 
-The same thing applies for the different publishing platforms, Maven, GitHub, Modrinth, and CurseForge.  
-To remove support for the ones you don't need just remove the section and properties regarding them.
+#### Spawning:
+
+- Found in the wild, specifically in plains and forest biomes.
+- Spawns very rarely to maintain its mystique.
+
+#### Type:
+
+- **Behavior**: Non-hostile.
+- **Breeding**: Cannot be bred.
+
+## **Configuration**
+
+The mod is fully configurable, allowing you to tailor the spawning behavior of each goblin to your preferences. For each goblin, you can specify:
+
+- **Biomes**: Determine which biomes the goblin can spawn in.
+- **Rarity**: Set how frequently the goblin appears.
+- **Quantity**: Adjust the number of goblins that spawn in a single event.
+
+This flexibility ensures you can create the perfect balance of challenge and discovery for your gameplay.
+
+## **Dependencies**
+
+| Mod                                                                     | Loader | Requirement |
+|:------------------------------------------------------------------------|:------:|:-----------:|
+| [Cobweb](https://modrinth.com/mod/forge-config-api-port)                |  All   |  Required   |
+| [Forge Config API Port](https://modrinth.com/mod/forge-config-api-port) |  All   |  Required   |
+| [GeckoLib](https://modrinth.com/mod/geckolib)                           |  All   |  Required   |
 
 ## **License and right of use**
 
-Feel free to use this mod template for any mod, just be sure to give credit and possibly link [here](https://github.com/crystal-nest/goblin-fabrications#readme).  
-This project is published under the [GNU General Public License v3.0](https://github.com/crystal-nest/goblin-fabrications/blob/master/LICENSE).
+Feel free to use this mod for any modpack or video, just be sure to give credit and possibly link [here](https://github.com/Crystal-Nest/goblin-fabrications#readme).  
+This project is published under the [GNU General Public License v3.0](https://github.com/crystal-nest/harvest-with-ease/blob/master/LICENSE).
 
 ## **Support us**
 
