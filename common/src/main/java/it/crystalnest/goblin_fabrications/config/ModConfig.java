@@ -98,7 +98,7 @@ public final class ModConfig extends CommonConfig {
 
     spawnWeight = builder
       .comment("Goblin spawn weight (rarer with lower value)")
-      .defineInRange("spawnWeight", 50, 1, Integer.MAX_VALUE);
+      .defineInRange("spawnWeight", 500, 500, Integer.MAX_VALUE);
 
     minSpawnSize = builder
       .comment("Minimum spawn group size for Goblins")
@@ -115,13 +115,4 @@ public final class ModConfig extends CommonConfig {
     builder.pop();
   }
 
-
-  /**
-   * Returns the list of biomes where Goblins can spawn, as read from the configuration file.
-   *
-   * @return the list of biome RegistryKeys.
-   */
-  //public static List<ResourceLocation> getBiomes() {
-  //  return CONFIG.biomes.get().stream().map(ResourceLocation::new).collect(Collectors.toList());
-  //}
 }
