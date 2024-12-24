@@ -2,7 +2,7 @@
 
 ---
 
-![Minecraft](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/minecraft.svg "Minecraft")![1.21](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-21.svg "1.21")
+![Minecraft](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/minecraft.svg "Minecraft")[![1.21](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/minecraft/1-21.svg "1.21")](https://github.com/Crystal-Nest/goblin-fabrications/tree/1.21)
 
 ![Loader](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/loader/loader.svg "Loader")[![NeoForge](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/loader/neoforge.svg "NeoForge")](https://modrinth.com/mod/goblin-fabrications/versions?l=neoforge)![Separator](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/separator.svg)[![Fabric](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/loader/fabric.svg "Fabric")](https://modrinth.com/mod/goblin-fabrications/versions?l=fabric)
 
@@ -14,11 +14,9 @@
 
 ## **Description**
 
-Goblin Fabrications brings a new layer of exploration and mischief to your Minecraft world by introducing unique goblin entities, starting with the Goblin Explorer. This cunning creature, known for its rare appearances in plains and forest biomes, carries
-precious treasures like diamond totems, totems of undying, and scraps of netherite. However, catching one is no small feat—these goblins are swift and elusive, teasing players with their mischievous nature.
+Goblin Fabrications brings a new layer of exploration and mischief to your Minecraft world by introducing unique goblin entities, starting with the Goblin Explorer. This cunning creature, known for its rare appearances in plains and forest biomes, carries precious treasures like diamond, totems of undying, and scraps of netherite. However, catching one is no small feat — these goblins are swift and elusive, teasing players with their mischievous nature.
 
-While the Goblin Explorer is the first of its kind, there are big plans for future updates that will introduce more goblin types, each with their own traits, items, and challenges. Stay tuned as we expand the world of Goblin Fabrications with new
-creatures and artifacts to enrich your adventures and test your wits!
+While the Goblin Explorer is the first of its kind, there are big plans for future updates that will introduce more goblin types, each with their own traits, items, and challenges. Stay tuned as we expand the world of Goblin Fabrications with new creatures and artifacts to enrich your adventures and test your wits!
 
 ## **Features**
 
@@ -46,7 +44,8 @@ The first goblin to make its way into Goblin Fabrications, the **Goblin Explorer
 
 ## **Configuration**
 
-The mod is fully configurable, allowing you to tailor the spawning behavior of each goblin to your preferences. For each goblin, you can specify:
+The mod is fully configurable, allowing you to tailor the spawning behavior of each goblin to your preferences. 
+For each goblin, you can specify:
 
 - **Biomes**: Determine which biomes the goblin can spawn in.
 - **Rarity**: Set how frequently the goblin appears.
