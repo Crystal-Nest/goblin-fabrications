@@ -9,12 +9,23 @@ and this project adheres to [Crystal Nest Semantic Versioning](https://crystalne
 
 - Nothing new.
 
-## [v1.0.0] - yyyy/mm/dd
+## [v0.0.1] - 2024/12/22
 
-- Release notes...
+- Added
+  - Goblin Explorer:
+    A rare and elusive goblin that flees from players and vanishes when out of sight for too long.
+    Drops rare items such as diamonds, totems of undying, and netherite scraps.
+    Spawns in plains and forest biomes.
+    Non-hostile and cannot be bred.
+
+- Configuration
+  - Added configurable options for:
+    - Spawn biomes.
+    - Spawn rarity.
+    - Spawn quantity.
 
 [Unreleased]: https://github.com/crystal-nest/goblin-fabrications
 
 [README]: https://github.com/crystal-nest/goblin-fabrications#readme
 
-[v1.0.0]: https://github.com/crystal-nest/goblin-fabrications/releases?q=1.0.0
+[v0.0.1]: https://github.com/crystal-nest/goblin-fabrications/releases?q=0.0.1
