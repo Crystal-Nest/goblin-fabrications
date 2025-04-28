@@ -1,0 +1,71 @@
+{
+  "goblin_hurt": {
+    "subtitle": "hurt",
+    "sounds": [
+      {
+        "name": "goblin_fabrications:goblin_hurt_001",
+        "pitch": 1.2
+      },
+      {
+        "name": "goblin_fabrications:goblin_hurt_002",
+        "pitch": 1.2
+      },
+      {
+        "name": "goblin_fabrications:goblin_hurt_003",
+        "pitch": 1.2
+      }
+    ]
+  },
+  "goblin_death": {
+    "subtitle": "death",
+    "sounds": [
+      {
+        "name": "goblin_fabrications:goblin_death_001",
+        "pitch": 1.2
+      }
+    ]
+  },
+  "goblin_surprise": {
+    "subtitle": "surprise",
+    "sounds": [
+      {
+        "name": "goblin_fabrications:goblin_surprise_001",
+        "pitch": 1.2
+      }
+    ]
+  },
+  "goblin_run": {
+    "subtitle": "run",
+    "sounds": [
+      {
+        "name": "goblin_fabrications:goblin_run_001",
+        "pitch": 1.2
+      },
+      {
+        "name": "goblin_fabrications:goblin_run_002",
+        "pitch": 1.2
+      },
+      {
+        "name": "goblin_fabrications:goblin_run_003",
+        "pitch": 1.2
+      },
+      {
+        "name": "goblin_fabrications:goblin_run_004",
+        "pitch": 1.2
+      }
+    ]
+  },
+  "goblin_idle": {
+    "subtitle": "idle",
+    "sounds": [
+      {
+        "name": "goblin_fabrications:goblin_idle_001",
+        "pitch": 1.2
+      },
+      {
+        "name": "goblin_fabrications:goblin_idle_002",
+        "pitch": 1.2
+      }
+    ]
+  }
+}

@@ -1,9 +1,9 @@
 package it.crystalnest.goblin_fabrications.entity.custom;
 
+import it.crystalnest.goblin_fabrications.sound.SoundRegistry;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Animal;
@@ -32,7 +32,7 @@ public abstract class Synx extends Animal {
         this.level().playSound(
           null, // Player to notify, null means no specific player
           this.blockPosition(), // Position to play the sound
-          SoundEvents.RABBIT_HURT, // Replace with your fleeing sound
+          SoundRegistry.GOBLIN_RUN.get(), // Replace with your fleeing sound
           SoundSource.HOSTILE, // Category of sound
           1.0F, // Volume
           1.0F + (this.level().random.nextFloat() - this.level().random.nextFloat()) * 0.2F // Pitch variation

@@ -2,6 +2,7 @@ package it.crystalnest.goblin_fabrications.entity.custom;
 
 import it.crystalnest.goblin_fabrications.Constants;
 import it.crystalnest.goblin_fabrications.goals.custom.GoblinFleeGoal;
+import it.crystalnest.goblin_fabrications.sound.SoundRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -125,17 +126,17 @@ public class GoblinEntity extends Synx implements GeoEntity {
 
   @Override
   protected SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
-    return SoundEvents.RABBIT_HURT;
+    return SoundRegistry.GOBLIN_HURT.get();
   }
 
   @Override
   protected SoundEvent getDeathSound() {
-    return SoundEvents.FOX_DEATH;
+    return SoundRegistry.GOBLIN_DEATH.get();
   }
 
   @Override
   protected void playStepSound(@NotNull BlockPos pos, @NotNull BlockState blockIn) {
-    this.playSound(SoundEvents.CHICKEN_STEP, 0.15F, 1.0F); // Example: Zombie step sound
+    this.playSound(SoundEvents.CHICKEN_STEP, 0.15F, 1.0F);
   }
 }
 
