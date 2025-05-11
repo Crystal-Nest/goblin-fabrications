@@ -35,7 +35,7 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
 
   private final TargetingConditions avoidEntityTargeting;
 
-  private static final int RUN_SOUND_DURATION_TICKS = 20; // 2 seconds for the sound duration
+  private static final int RUN_SOUND_DURATION_TICKS = 40; // 2 seconds for the sound duration
   private int soundPlayTick = RUN_SOUND_DURATION_TICKS;
 
   private static final int LINE_OF_SIGHT_COOLDOWN_TICKS = 300; // 2 seconds (20 ticks/second)

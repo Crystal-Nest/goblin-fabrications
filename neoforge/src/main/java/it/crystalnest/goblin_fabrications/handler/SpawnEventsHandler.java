@@ -1,7 +1,7 @@
 package it.crystalnest.goblin_fabrications.handler;
 
 
-import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
+
 
 /**
  * Handles spawn-related events.
