@@ -95,7 +95,7 @@ public class GoblinEntity extends Synx implements GeoEntity {
     }*/
   @Override
   protected SoundEvent getAmbientSound() {
-    return SoundEvents.RABBIT_AMBIENT;
+    return SoundRegistry.GOBLIN_IDLE.get();
   }
 
   @Override

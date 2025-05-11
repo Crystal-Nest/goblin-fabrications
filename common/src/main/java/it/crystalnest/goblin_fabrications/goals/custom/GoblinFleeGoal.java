@@ -1,6 +1,7 @@
 package it.crystalnest.goblin_fabrications.goals.custom;
 
 import it.crystalnest.goblin_fabrications.entity.custom.GoblinEntity;
+import it.crystalnest.goblin_fabrications.sound.SoundRegistry;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
@@ -33,6 +34,11 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
   private final double sprintSpeedModifier;
 
   private final TargetingConditions avoidEntityTargeting;
+
+  private static final int RUN_SOUND_DURATION_TICKS = 20; // 2 seconds for the sound duration
+  private int soundPlayTick = RUN_SOUND_DURATION_TICKS;
+
+  private static final int LINE_OF_SIGHT_COOLDOWN_TICKS = 300; // 2 seconds (20 ticks/second)
 
   @Nullable
   protected T toAvoid;
@@ -84,13 +90,15 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
 
   public void start() {
     this.pathNav.moveTo(this.path, this.walkSpeedModifier);
+    if (!((GoblinEntity) this.mob).isFleeing() && !this.mob.level().isClientSide()) {
+      this.mob.playSound(SoundRegistry.GOBLIN_SURPRISE.get(), 0.15F, 1.0F);
+    }
     ((GoblinEntity) this.mob).isFleeing(true);
+
   }
 
   public void stop() {
-    //this.toAvoid = null;
     // ((GoblinEntity) this.mob).isFleeing(false);
-    // this.mob.discard();
   }
 
   @Override
@@ -99,6 +107,16 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
       return;
     }
 
+    if (((GoblinEntity) this.mob).isFleeing()) {
+      // Check if sound finished playing or never started
+      if (soundPlayTick < 0) {
+        this.mob.playSound(SoundRegistry.GOBLIN_RUN.get(), 0.45F, 1.0F);
+        System.out.println("PLAY RUN");
+        soundPlayTick = RUN_SOUND_DURATION_TICKS;
+      } else {
+      soundPlayTick --; // Reset when not fleeing
+    }
+    }
     this.mob.getNavigation().setSpeedModifier(this.sprintSpeedModifier);
 
     // Continuously adjust path to keep moving in the opposite direction
@@ -113,10 +131,10 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
       this.timeWithoutLineOfSight++; // Increment the counter if the player is out of sight
     }
 
-    // Check if the mob should despawn after 15 seconds out of sight (300 ticks)
-    if (this.timeWithoutLineOfSight > 300) {
-      this.mob.discard(); // Despawn the goblin
-      System.out.println("Goblin despawn");
+    // Check if the mob should de-spawn after 15 seconds out of sight (300 ticks)
+    if (this.timeWithoutLineOfSight > LINE_OF_SIGHT_COOLDOWN_TICKS) {
+      this.mob.discard(); // De-spawn the goblin
+      System.out.println("Goblin de-spawn");
     }
   }
 }
