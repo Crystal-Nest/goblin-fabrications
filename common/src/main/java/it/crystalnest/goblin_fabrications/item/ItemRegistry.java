@@ -34,7 +34,7 @@ public final class ItemRegistry {
   /**
    * Goblin Fabrications creative tab.
    */
-  public static final Supplier<CreativeModeTab> LEATHERED_BOOTS_TAB = CREATIVE_TABS.register(Constants.GOBLIN_FABRICATIONS_TAB, Services.ITEM.supplyTab(
+  public static final Supplier<CreativeModeTab> GOBLIN_TAB = CREATIVE_TABS.register(Constants.GOBLIN_FABRICATIONS_TAB, Services.ITEM.supplyTab(
     () -> GOBLIN_EXPLORER_SPAWN_EGG.get().getDefaultInstance(),
     Constants.GOBLIN_FABRICATIONS_TAB,
     output -> output.accept(GOBLIN_EXPLORER_SPAWN_EGG.get())
