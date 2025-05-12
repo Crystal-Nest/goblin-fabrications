@@ -10,8 +10,7 @@ public final class SpawnEventsHandler {
 
   private SpawnEventsHandler() {}
 
-  public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-
-  }
+  //public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
+  //}
 
 }
