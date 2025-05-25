@@ -3,9 +3,11 @@ package it.crystalnest.goblin_fabrications.entity.custom;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animation.Animation;
@@ -49,4 +51,6 @@ public abstract class Synx extends Animal {
     super.defineSynchedData(builder);
     builder.define(FLEEING, false);
   }
+
+  protected abstract @NotNull ResourceKey<LootTable> getDefaultLootTable();
 }

@@ -6,6 +6,9 @@ import it.crystalnest.cobweb.api.registry.CobwebRegistry;
 import it.crystalnest.goblin_fabrications.Constants;
 import it.crystalnest.goblin_fabrications.entity.EntityRegistry;
 import it.crystalnest.goblin_fabrications.platform.Services;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
@@ -20,12 +23,32 @@ public final class ItemRegistry {
    * {@link CobwebRegister} for {@link Item}s.
    */
   private static final CobwebRegister<Item> ITEMS = CobwebRegistry.ofItems(Constants.MOD_ID);
+  private static final ResourceLocation SPAWN_EGG_ID = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "goblin_explorer_spawn_egg");
+  private static final ResourceKey<Item> SPAWN_EGG_KEY = ResourceKey.create(Registries.ITEM, SPAWN_EGG_ID);
+
 
   /**
    * Goblin Explorer mob spawn egg.
    */
-  public static final CobwebEntry<Item> GOBLIN_EXPLORER_SPAWN_EGG = ITEMS.register("goblin_explorer_spawn_egg", () -> new SpawnEggItem(EntityRegistry.GOBLIN_EXPLORER.get(), 0xDD4477, 0x909733, new Item.Properties()));
+  public static final CobwebEntry<Item> GOBLIN_EXPLORER_SPAWN_EGG = ITEMS.register(
 
+    SPAWN_EGG_ID.getPath(),
+
+    () -> new SpawnEggItem(
+
+      EntityRegistry.GOBLIN_EXPLORER.get(),
+
+      0xDD4477,
+
+      0x909733,
+
+      new Item.Properties()
+
+        .setId(SPAWN_EGG_KEY)  // Required for 1.21.2+
+
+    )
+
+  );
   /**
    * {@link CobwebRegister} for {@link CreativeModeTab}s.
    */

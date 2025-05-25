@@ -9,6 +9,7 @@ import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
+import software.bernie.geckolib.renderer.GeoRenderer;
 
 public class GoblinModel extends DefaultedEntityGeoModel<GoblinEntity> {
   public GoblinModel() {
@@ -16,12 +17,12 @@ public class GoblinModel extends DefaultedEntityGeoModel<GoblinEntity> {
   }
 
   @Override
-  public ResourceLocation getModelResource(GoblinEntity animatable) {
+  public ResourceLocation getModelResource(GoblinEntity animatable, GeoRenderer<GoblinEntity> renderer) {
     return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "geo/entity/goblin.geo.json");
   }
 
   @Override
-  public ResourceLocation getTextureResource(GoblinEntity animatable) {
+  public ResourceLocation getTextureResource(GoblinEntity animatable, GeoRenderer<GoblinEntity> render) {
     return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/entity/entity/goblin.png");
   }
 

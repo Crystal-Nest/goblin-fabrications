@@ -7,6 +7,7 @@ import it.crystalnest.goblin_fabrications.Constants;
 import it.crystalnest.goblin_fabrications.entity.custom.GoblinEntity;
 import it.crystalnest.goblin_fabrications.platform.Services;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -14,12 +15,15 @@ import net.minecraft.world.entity.MobCategory;
 public final class EntityRegistry {
 
   private static final CobwebRegister<EntityType<?>> ENTITY_TYPES = CobwebRegistry.of(Registries.ENTITY_TYPE, Constants.MOD_ID);
-
+  public static final ResourceKey<EntityType<?>> GOBLIN_EXPLORER_TYPE = ResourceKey.create(
+    Registries.ENTITY_TYPE,
+    ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, Constants.GOBLIN_EXPLORER_ID)
+  );
   public static final CobwebEntry<EntityType<GoblinEntity>> GOBLIN_EXPLORER = ENTITY_TYPES.register(
     "goblin_explorer",
     () -> EntityType.Builder.of(GoblinEntity::new, MobCategory.CREATURE)
       .sized(0.5f, 0.9f)
-      .build(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, Constants.GOBLIN_EXPLORER_ID).toString())
+      .build(GOBLIN_EXPLORER_TYPE)
   );
 
   public static void register() {

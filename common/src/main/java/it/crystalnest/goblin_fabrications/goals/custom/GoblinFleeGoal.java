@@ -2,12 +2,15 @@ package it.crystalnest.goblin_fabrications.goals.custom;
 
 import it.crystalnest.goblin_fabrications.entity.custom.GoblinEntity;
 import it.crystalnest.goblin_fabrications.sound.SoundRegistry;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -41,7 +44,7 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
   private static final int LINE_OF_SIGHT_COOLDOWN_TICKS = 300; // 2 seconds (20 ticks/second)
 
   @Nullable
-  protected T toAvoid;
+  protected Entity toAvoid;
 
   @Nullable
   protected Path path;
@@ -63,7 +66,17 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
     this.predicateOnAvoidEntity = predicate2;
     this.pathNav = pathfinderMob.getNavigation();
     this.setFlags(EnumSet.of(Flag.MOVE));
-    this.avoidEntityTargeting = TargetingConditions.forCombat().range(f).selector(predicate2.and(predicate));
+    this.avoidEntityTargeting = TargetingConditions.forCombat()
+      .range(f)
+      .selector((attacker, target) -> {  // Note the two parameters now
+        // First predicate (originally predicate2)
+        boolean condition1 = attacker instanceof Player;
+        // Second predicate (originally predicate)
+        boolean condition2 = attacker.getType() == EntityType.WOLF;
+        return condition1 || condition2;  // Combine conditions
+      });
+
+
   }
 
   public GoblinFleeGoal(PathfinderMob pathfinderMob, Class<T> clazz, float f, double d, double e, Predicate<LivingEntity> predicate) {
@@ -73,7 +86,7 @@ public class GoblinFleeGoal<T extends LivingEntity> extends Goal {
   @Override
   public boolean canUse() {
     if (this.toAvoid == null) {
-      this.toAvoid = this.mob.level().getNearestEntity(this.mob.level().getEntitiesOfClass(this.avoidClass, this.mob.getBoundingBox().inflate(maxDist, 15.0, maxDist), avoidPredicate), this.avoidEntityTargeting, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ());
+      this.toAvoid = this.mob.level().getNearestPlayer(this.mob, 15);
       return false;
     }
 
