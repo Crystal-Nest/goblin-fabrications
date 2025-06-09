@@ -1,0 +1,11 @@
+{
+
+  "parent": "minecraft:item/generated",
+
+  "textures": {
+
+    "layer0": "goblin_fabrications:item/goblin_explorer"
+
+  }
+
+}

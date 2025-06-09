@@ -2,29 +2,27 @@ plugins {
   id "multiloader-loader"
   id "net.neoforged.moddev"
 }
-dependencies {
-  implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
-}
+
 neoForge {
   version = neoforge_version
-  def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
+  def at = project(":common").file("src/main/resources/META-INF/accesstransformer.cfg")
   if (at.exists()) {
-    accessTransformers.add(at.absolutePath)
+    accessTransformers.from(at.absolutePath)
   }
   parchment {
-    minecraftVersion = minecraft_version
+    minecraftVersion = parchment_minecraft
     mappingsVersion = parchment_version
   }
   runs {
     configureEach {
-      systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
+      systemProperty("neoforge.enabledGameTestNamespaces", mod_id)
       ideName = "NeoForge ${it.name.capitalize()} (${project.path})" // Unify the run config names with fabric
     }
     client {
       client()
     }
     data {
-      data()
+      clientData()
     }
     server {
       server()
