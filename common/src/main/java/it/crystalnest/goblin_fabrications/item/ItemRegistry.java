@@ -22,23 +22,20 @@ public final class ItemRegistry {
   /**
    * {@link CobwebRegister} for {@link Item}s.
    */
-  private static final CobwebRegister<Item> ITEMS = CobwebRegistry.ofItems(Constants.MOD_ID);
+  private static final CobwebRegister.Items ITEMS = CobwebRegistry.ofItems(Constants.MOD_ID);
   private static final ResourceLocation SPAWN_EGG_ID = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "goblin_explorer");
-  private static final ResourceKey<Item> SPAWN_EGG_KEY = ResourceKey.create(Registries.ITEM, SPAWN_EGG_ID);
+
 
 
   /**
    * Goblin Explorer mob spawn egg.
    */
-  public static final CobwebEntry<Item> GOBLIN_EXPLORER_SPAWN_EGG = ITEMS.register(
-
-    SPAWN_EGG_ID.getPath(),
-    () -> new SpawnEggItem(
+  public static final CobwebEntry<Item> GOBLIN_EXPLORER_SPAWN_EGG = ITEMS.registerItem(
+    SPAWN_EGG_ID.getPath() + "_spawn_egg",
+    properties -> new SpawnEggItem(
       EntityRegistry.GOBLIN_EXPLORER.get(),
-      new Item.Properties()
-        .setId(SPAWN_EGG_KEY)  // Required for 1.21.2+
-      )
-
+      properties
+    )
   );
   /**
    * {@link CobwebRegister} for {@link CreativeModeTab}s.
