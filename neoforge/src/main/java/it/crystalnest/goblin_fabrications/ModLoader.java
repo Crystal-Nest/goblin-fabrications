@@ -2,13 +2,9 @@ package it.crystalnest.goblin_fabrications;
 
 import it.crystalnest.goblin_fabrications.entity.EntityRegistry;
 import it.crystalnest.goblin_fabrications.modifier.biome.BiomeModifierRegistry;
-import net.minecraft.world.entity.SpawnPlacementType;
-import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
