@@ -24,7 +24,7 @@ While the Goblin Explorer is the first of its kind, there are big plans for futu
 
 The first goblin to make its way into Goblin Fabrications, the **Goblin Explorer**, is a rare and elusive creature with the following characteristics:
 
-![Goblin Explorer](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/goblin-fabrications/GoblinImg1.png "Goblin Fabrications banner")
+![Goblin Explorer](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/goblin-fabrications/goblin-explorer.png "Goblin Fabrications banner")
 
 #### Core Traits:
 
