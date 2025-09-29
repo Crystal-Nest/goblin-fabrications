@@ -1,4 +1,4 @@
-![Goblin Fabrications banner](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/goblin-fabrications/goblin_title.png "Goblin Fabrications banner")
+![Goblin Fabrications banner](https://raw.githubusercontent.com/crystal-nest/mod-fancy-assets/main/goblin-fabrications/banner.png "Goblin Fabrications banner")
 
 ---
 
